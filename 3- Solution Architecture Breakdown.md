@@ -1,4 +1,4 @@
-# Solution Architecture: Azure Data Engineering for Healthcare Revenue Cycle Management (RCM)
+# Solution Architecture for Healthcare Revenue Cycle Management (RCM)
 
 This project implements a comprehensive data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** using the **Medallion Architecture** in **Azure**. The architecture is divided into **Bronze, Silver, and Gold layers**, each serving a specific role in transforming raw data into actionable insights.
 
