@@ -1,5 +1,9 @@
 # Solution Architecture for Healthcare Revenue Cycle Management (RCM)
 
+![image](https://github.com/user-attachments/assets/90f24123-4347-4064-b147-df7190544307)
+
+
+
 This project implements a comprehensive data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** using the **Medallion Architecture** in **Azure**. The architecture is divided into **Landing**, **Bronze, Silver, and Gold layers**, each serving a specific role in transforming raw data into actionable insights.
 
 ## Medallion Architecture
@@ -32,26 +36,27 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
   
 - **Key Processes**:
     - **Data Cleaning**: Null values are handled, data quality checks are applied, and bad records are quarantined.
-    - **Common Data Model (CDM)**: Standardizes data from different sources to resolve schema discrepancies and potential ID clashes (e.g., patient tables from different hospitals).
+    - **Common Data Model (CDM)**: Standardises data from different sources to resolve schema discrepancies and potential ID clashes (e.g., patient tables from different hospitals).
     - **Slowly Changing Dimension (SCD) Type 2**: Maintains historical records, ensuring that changes in patient demographics or other data are properly tracked.
 
-- **Data Format**: Data is stored in **Delta tables** in the Silver layer, which provide ACID transactions, enabling updates and improved data quality management.
+- **Data Format**: Data is stored in **Delta tables** in the Silver layer, which provides ACID transactions, enabling updates and improved data quality management.
 
 ### 4. Gold Layer (Facts and Dimensions)
 
-- **Purpose**: The Gold layer contains curated, aggregated data modeled into fact and dimension tables for business reporting and KPI generation.
+- **Purpose**: The Gold layer contains curated, aggregated data modelled into fact and dimension tables for business reporting and KPI generation.
 
 - **Key Processes**:
     - Creation of **fact tables**, such as `fact_transaction`, to capture key business events.
     - Development of **dimension tables**, like `dim_patient`, `dim_provider`, and `dim_department`, to provide context and details for the facts.
 
-- **Data Format**: Data is stored in **Delta tables**, optimized for reporting and analytical queries.
+- **Data Format**: Data is stored in **Delta tables**, optimised for reporting and analytical queries.
 
 ## Data Flow
 
-1. **Bronze Layer**: Data from various sources (EMR databases, claims files, APIs) is ingested in **Parquet** format.
-2. **Silver Layer**: Data is cleansed, standardized, and enriched using techniques like data quality checks, CDM implementation, and SCD Type 2. Data is stored in **Delta tables**.
-3. **Gold Layer**: Data from the Silver layer is transformed into fact and dimension tables, also stored as **Delta tables** for optimized reporting.
+1.**Landing Layer**: Claims data uploaded by insurance providers in CSV format.
+2. **Bronze Layer**: Data from various sources (EMR databases, APIs) is ingested in **Parquet** format.
+3. **Silver Layer**: Data is cleansed, standardized, and enriched using techniques like data quality checks, CDM implementation, and SCD Type 2. Data is stored in **Delta tables**.
+4. **Gold Layer**: Data from the Silver layer is transformed into fact and dimension tables, also stored as **Delta tables** for optimized reporting.
 
 ## Key Technologies
 
