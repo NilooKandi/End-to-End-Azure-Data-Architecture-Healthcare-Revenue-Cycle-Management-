@@ -39,6 +39,8 @@ The primary objectives of AR management are:
 
 ### Key Performance Indicators (KPIs) for AR
 
+[Healthcare Accounts Receivable Management](https://mdmanagementgroup.com/healthcare-accounts-receivable-management/)
+
 - **Risk Factors Analysis**: Analyze delayed payments and identify factors (e.g., insurance delays, patient financial responsibility) contributing to AR inefficiencies.
 - **KPIs for AR**: Track critical KPIs such as outstanding payments, delayed claims, and payment status (e.g., paid, pending, denied).
 To effectively manage AR, hospitals track KPIs such as:
