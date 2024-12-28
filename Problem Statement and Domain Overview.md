@@ -41,7 +41,7 @@ The primary objectives of AR management are:
 
 [Healthcare Accounts Receivable Management](https://mdmanagementgroup.com/healthcare-accounts-receivable-management/)
 
-- **Risk Factors Analysis**: Analyze delayed payments and identify factors (e.g., insurance delays, patient financial responsibility) contributing to AR inefficiencies.
+- **Risk Factors Analysis**: Analyse delayed payments and identify factors (e.g., insurance delays, patient financial responsibility) contributing to AR inefficiencies.
 - **KPIs for AR**: Track critical KPIs such as outstanding payments, delayed claims, and payment status (e.g., paid, pending, denied).
 To effectively manage AR, hospitals track KPIs such as:
 
@@ -58,6 +58,8 @@ To effectively manage AR, hospitals track KPIs such as:
        - **$400,000 AR**  
        - **Collection rate**: **$10,000/day**  
        - **Target days in AR**: **45 days**
+
+[Revenue Cycle KPIs, Definitions, and Benchmarks](https://gentem.com/blog/revenue-cycle-kpis-definitions-and-benchmarks/)
 
 ### Data Engineering Objectives
 
