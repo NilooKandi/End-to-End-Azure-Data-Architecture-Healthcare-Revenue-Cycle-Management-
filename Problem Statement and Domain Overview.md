@@ -32,7 +32,7 @@ The primary objectives of AR management are:
 1. **Collect cash quickly** by securing payments as soon as possible.
 2. **Minimise the collection period** – the longer the payment is overdue, the less likely the full amount will be collected (or, for example, a decrease in the overall value of the receivable due to the time value of money).
 
-**Collection Probability** over time:
+**Collection Probability** of the full amount decreases over time:
 - **93%** of the owed amount is collected within **30 days**.
 - **85%** is collected within **60 days**.
 - **73%** is collected within **90 days**.
