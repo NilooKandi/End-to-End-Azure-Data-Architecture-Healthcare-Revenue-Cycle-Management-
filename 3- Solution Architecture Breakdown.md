@@ -76,5 +76,5 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 ---
 
-This architecture offers a robust and scalable approach to building a data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** on **Azure**. By utilizing **Azure Data Factory**, **Databricks**, and other Azure services, along with best practices in data engineering, the project enables healthcare organisations to gain valuable insights from their data and optimise their financial performance.
+This architecture offers a robust and scalable approach to building a data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** on **Azure**. By utilising **Azure Data Factory**, **Databricks**, and other Azure services, along with best practices in data engineering, the project enables healthcare organisations to gain valuable insights from their data and optimise their financial performance.
 
