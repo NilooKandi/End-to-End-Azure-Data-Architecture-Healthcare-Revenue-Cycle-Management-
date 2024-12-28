@@ -13,7 +13,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 ### 2. Bronze Layer (Source of Truth)
 
-- **Purpose**: The Bronze layer serves as the initial landing zone for raw data from various sources. It stores data in its native format with minimal transformations, ensuring immutability and serving as the single source of truth for downstream processes.
+- **Purpose**: The Bronze layer serves as the initial zone for raw data from EMR (Azure SQL DB) and NPI, ICD, and CPT (public API). It stores data in its native format with minimal transformations, ensuring immutability and serving as the single source of truth for downstream processes.
   
 - **Data Sources**:
     - **EMR Data**: Ingested from Azure SQL DB in Parquet format.
