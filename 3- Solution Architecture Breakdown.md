@@ -74,7 +74,39 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 - **Retry mechanisms**: Implement retries for failed tasks to ensure pipeline resilience.
 - **Naming conventions and folder structure**: Improve code organisation and readability.
 
----
 
 This architecture offers a robust and scalable approach to building a data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** on **Azure**. By utilising **Azure Data Factory**, **Databricks**, and other Azure services, along with best practices in data engineering, the project enables healthcare organisations to gain valuable insights from their data and optimise their financial performance.
+
+---
+
+# Conceptual Entity-Relationship Diagram (ERD) for Gold Layer Data Model
+
+![image](https://github.com/user-attachments/assets/b4c5d251-ee9b-4767-9684-41bf6f0df806)
+
+
+This section provides a conceptual **Entity-Relationship Diagram (ERD)** that represents the final data model in the **Gold layer** of the project. The ERD is designed to showcase the core entities and their relationships, which are crucial for generating reports and KPIs related to **patient encounters**, **transactions**, and **healthcare providers**.
+
+### Key Entities and Relationships:
+
+- **Patient**: Represents patients and their demographics, including details like insurance, medical history, and personal contact information.
+- **Provider**: Represents healthcare providers, including doctors, specialists, and medical facilities, with relevant details such as specialties and affiliations.
+- **Department**: Represents hospital departments or healthcare service units that provide various medical services.
+- **Encounter**: Represents a patient visit to a provider, detailing the services rendered, diagnoses, procedures, and associated charges.
+- **Transaction**: Represents financial transactions related to patient encounters, such as billings, payments (from both patients and insurance), and adjustments.
+- **Claim**: Represents insurance claims associated with patient encounters, including claim status (approved, denied, or partially paid) and payment details.
+
+### Relationships:
+
+- **Patient to Encounter**: A one-to-many relationship, as a single patient can have multiple encounters with different providers or departments.
+- **Provider to Encounter**: A one-to-many relationship, where a provider can have multiple encounters with different patients.
+- **Encounter to Transaction**: A one-to-many relationship, as a single encounter can generate multiple financial transactions, including billing and payments.
+- **Provider to Transaction**: A one-to-many relationship, as a provider can be associated with multiple transactions over time.
+- **Claim to Encounter**: A one-to-one or one-to-many relationship, as an encounter may lead to a claim being filed with an insurance company.
+  
+### Use in Reporting:
+
+This ERD serves as the foundational data model for generating insights into key performance indicators (KPIs) related to **Accounts Receivable (AR)**, **payment delays**, **uncollected payments**, and other financial metrics in healthcare revenue cycle management.
+
+The final data model in the **Gold layer** aggregates and curates data from the **Bronze** and **Silver layers** to populate **fact** and **dimension** tables, which are optimised for business reporting and analytics.
+
 
