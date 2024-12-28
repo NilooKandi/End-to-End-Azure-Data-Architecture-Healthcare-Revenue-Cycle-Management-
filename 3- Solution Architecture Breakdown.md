@@ -53,7 +53,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 ## Data Flow
 
-1.**Landing Layer**: Claims data uploaded by insurance providers in CSV format.
+1. **Landing Layer**: Claims data uploaded by insurance providers in CSV format.
 2. **Bronze Layer**: Data from various sources (EMR databases, APIs) is ingested in **Parquet** format.
 3. **Silver Layer**: Data is cleansed, standardized, and enriched using techniques like data quality checks, CDM implementation, and SCD Type 2. Data is stored in **Delta tables**.
 4. **Gold Layer**: Data from the Silver layer is transformed into fact and dimension tables, also stored as **Delta tables** for optimized reporting.
