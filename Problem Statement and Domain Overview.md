@@ -1,75 +1,89 @@
-## Project Overview
-
-This project focuses on building an **end-to-end data engineering pipeline** for **Healthcare Revenue Cycle Management (RCM)** using the **Azure data engineering stack**. **RCM** encompasses the financial aspects of healthcare, from **patient appointment scheduling** to **provider payment**. 
-
-The project aims to address a critical challenge faced by healthcare providers—ensuring their **financial health** by optimizing **accounts receivable (AR)**. **Patient payment** is one of the key risk factors in the **RCM** process, as **insurance companies** tend to pay promptly, but **patients** often have delayed or uncollected payments.
-
----
-
 ## Problem Statement
 
-The **accounts receivable (AR)** process is critical for maintaining the financial stability of healthcare providers. One of the main risks in RCM is the **uncollected patient payments**, especially when the patient must pay in full or partially. Delayed or uncollected payments can lead to substantial financial losses for hospitals.
+The **Revenue Cycle Management (RCM)** process is vital for hospitals to manage the financial side of healthcare services, ensuring they can continue providing quality care while maintaining financial stability. RCM covers the entire process, starting from when a patient books an appointment through to when the provider receives payment. This project is focused on improving the **Accounts Receivable (AR)** aspect, which tracks the money owed to the hospital by patients and insurers.
 
-This project aims to develop a data engineering pipeline that processes healthcare data to generate key insights that help hospitals improve the AR process, mitigate risks, and ultimately **optimize the RCM** process.
+### Overview of the RCM Process
 
----
+1. **Patient Visit**: The RCM journey begins when a patient visits the hospital. During this visit, patient details, including **insurance information**, are collected. This helps the provider understand who is responsible for the bill – the **insurance company**, the **patient**, or both.
 
-## Project Goals
+   **Example**:  
+   - Total bill: **$20,000**  
+   - Insurance pays: **$15,000**  
+   - Patient owes: **$5,000**
 
-The primary objective of this project is to create a comprehensive **data pipeline** that processes healthcare data from multiple sources and produces actionable insights for the **RCM team**. Specifically, the project will:
+2. **Services Provided**: After the patient visit, medical services are provided, and the hospital generates a bill.
 
-- **Generate Fact and Dimension Tables**: Build a data model with facts and dimensions that support reporting and analytics related to AR.
-- **Create KPIs for AR**: Develop Key Performance Indicators (KPIs) to help the reporting team monitor hospital finances, track AR status, and identify delayed or uncollected payments.
-- **Analyze Payment Risks**: Identify and analyze factors contributing to delayed or uncollected patient payments, helping optimize hospital revenue.
-- **Optimize Financial Performance**: Provide insights into process improvements that reduce the risk of uncollected payments and improve financial outcomes for the hospital.
+3. **Billing and Claims Review**: The bill is sent to the insurance company for review. The insurance may approve the claim and pay in full, pay partially, or reject the claim entirely.
 
----
+4. **Payments and Follow-ups**: If the insurance only covers part of the bill, the remaining balance is the patient's responsibility. The hospital will follow up with the patient to collect the outstanding amount.
 
-## RCM Process Flow
+5. **Tracking and Improvement**: The RCM process focuses on tracking unpaid AR and optimising the collection process, ensuring the hospital remains financially healthy.
 
-The **Revenue Cycle Management (RCM)** process in this project begins when a **patient visits** a healthcare provider. Here's a high-level breakdown of the RCM process and its key components:
+### Key Challenges in Accounts Receivable (AR)
 
-### 1. **RCM Process**
+Managing **AR** is crucial for hospitals, but **patient payments** can pose significant risks. There are scenarios where the financial burden falls more heavily on patients, making it more difficult to collect outstanding payments. Some examples include:
 
-- **Patient Visit**: The process begins with a patient visit to the hospital. During this visit, patient details, particularly **insurance coverage**, are collected.
-- **Payment Responsibility**: Based on the patient details, the payment responsibility (e.g., **insurance**, **patient**, or both) is determined, which is crucial for understanding how payments are handled.
+- **Low Insurance Coverage**: When insurance providers place most of the financial responsibility on the patient, as is often the case with high-deductible policies or private clinics.
+- **Dental and Private Treatments**: Non-covered services or treatments that require the patient to pay the full amount.
+- **Deductibles**: When the patient is responsible for covering a portion of the medical costs before insurance kicks in.
 
-### 2. **Accounts Receivable (AR)**
+The primary objectives of AR management are:
 
-- **Accounts Receivable**: AR represents the money owed to hospitals by patients and insurance companies. Managing AR effectively is critical to maintaining financial health.
-- **Risk Factors**: One major risk in RCM is **uncollected patient payments**, which can negatively impact hospital finances, especially in cases where patients are responsible for partial or full payment.
+1. **Collect cash quickly** by securing payments as soon as possible.
+2. **Minimise the collection period** – the longer the payment is overdue, the less likely the full amount will be collected.
 
----
+**Collection Probability** over time:
+- **93%** of the owed amount is collected within **30 days**.
+- **85%** is collected within **60 days**.
+- **73%** is collected within **90 days**.
 
-## Data Engineering Pipeline Overview
+### Key Performance Indicators (KPIs) for AR
 
-This project utilizes the **Azure Data Engineering stack** to build a scalable and efficient pipeline that processes, stores, and analyzes healthcare data. The pipeline consists of several key stages:
-
-### **1. Data Ingestion**
-- **Azure Data Factory (ADF)** is used to orchestrate and manage data workflows, pulling in data from different sources (e.g., patient records, insurance claims, and payment data).
-
-### **2. Data Transformation**
-- **Azure Databricks** is used for data processing and transformation. The raw data is cleaned, aggregated, and enriched to build key metrics such as AR balances and payment delays.
-
-### **3. Data Storage**
-- **Azure SQL Database** and **Azure Synapse Analytics** are used to store structured data. Fact and dimension tables are created in the data warehouse to support querying and reporting.
-
-### **4. Reporting and Analytics**
-- **Power BI** is used to visualize key metrics and create reports that help the RCM team monitor hospital performance and identify areas for improvement.
-
-### **5. Key Metrics**
-- **KPIs for AR**: Track critical KPIs such as outstanding payments, delayed claims, and payment status (e.g., paid, pending, denied).
 - **Risk Factors Analysis**: Analyze delayed payments and identify factors (e.g., insurance delays, patient financial responsibility) contributing to AR inefficiencies.
+- **KPIs for AR**: Track critical KPIs such as outstanding payments, delayed claims, and payment status (e.g., paid, pending, denied).
+To effectively manage AR, hospitals track KPIs such as:
+
+1. **AR > 90 days**: This KPI measures how much of the total AR is overdue by more than 90 days.
+   - **Example**:  
+     - Total AR: **$1,000,000**  
+     - AR > 90 days: **$200,000**  
+     - Overdue Ratio: **200K / 1M = 20%**
+
+2. **Days in AR**: This KPI tracks how long it takes to collect the AR.
+   - **Example**:  
+     - Total AR: **$1,000,000**  
+     - AR collected in **100 days**:  
+       - **$400,000 AR**  
+       - **Collection rate**: **$10,000/day**  
+       - **Target days in AR**: **45 days**
+
+### Data Engineering Objectives
+
+Given the complexity and variety of data sources involved in the RCM process (e.g., patient records, insurance claims, billing details, and payment transactions), there is a need to create a robust **end-to-end data pipeline**. This pipeline will collect, process, and structure data to enable accurate reporting on AR performance.
+
+The primary goals of this project are to:
+
+- **Ingest data** from various sources, such as patient records, insurance claims, billing information, and payment history.
+- **Transform** raw data into structured formats to create **fact tables** and **dimension tables** that will support AR analysis.
+- **Generate KPIs** like **AR > 90 days** and **Days in AR** to help the reporting team monitor and assess AR performance.
+- Provide insights to help **reduce collection periods**, improve cash flow, and ultimately enhance the financial health of hospitals.
+
+### Solution Approach
+
+The pipeline will be built using the **Azure Data Engineering Stack**, employing tools like **Azure Data Factory**, **Azure Databricks**, **Azure Synapse Analytics**, and **Power BI**. These tools will automate the data flow, perform necessary transformations, and enable KPI reporting.
+
+By streamlining the data integration, transformation, and reporting processes, this project will help hospitals optimise their **Accounts Receivable (AR)**, reduce the collection period, and improve overall financial management.
 
 ---
 
 ## Tools and Technologies
 
-This project leverages the following **Azure tools and technologies**:
+This project makes use of the following tools:
 
-- **Azure Data Factory (ADF)**: Data orchestration, ETL (Extract, Transform, Load) processes.
-- **Azure Databricks**: Data processing and transformation using Spark.
-- **Azure SQL Database**: Relational database for structured data storage.
-- **Azure Synapse Analytics**: Data warehousing for scalable data storage and analytics.
-- **Power BI**: Reporting and dashboarding for KPIs and analytics.
-- **Python & SQL**: For writing transformation scripts and data querying.
+- **Azure Data Factory (ADF)**: For orchestrating and managing data workflows.
+- **Azure Databricks**: For data processing and transformation.
+- **Azure Synapse Analytics**: For structured data storage and analytics.
+- **Python & SQL**: For data processing, manipulation, and querying.
+
+
+
