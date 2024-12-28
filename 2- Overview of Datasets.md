@@ -39,4 +39,4 @@ The project uses diverse datasets from various sources to build a comprehensive 
 
 ---
 
-These datasets are ingested and transformed through the **Landing** **Bronze**, **Silver**, and **Gold** layers of the medallion architecture. The final output in the **Gold** layer consists of **fact** and **dimension tables**, which can be used to generate valuable insights and KPIs for optimizing the RCM process.
+These datasets are ingested and transformed through the **Landing**, **Bronze**, **Silver**, and **Gold** layers of the medallion architecture. The final output in the **Gold** layer consists of **fact** and **dimension tables**, which can be used to generate valuable insights and KPIs for optimizing the RCM process.
