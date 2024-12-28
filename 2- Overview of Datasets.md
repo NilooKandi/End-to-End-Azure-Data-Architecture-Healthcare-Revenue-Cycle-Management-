@@ -23,7 +23,7 @@ The project uses diverse datasets from various sources to build a comprehensive 
 
 * **Source:** Public API for the National Provider Identifier (NPI).  
 * **Format:** Directly ingested into the Bronze layer in Parquet format.  
-* **Content:** Provides comprehensive information about healthcare providers, including their NPI number, name, position, organization affiliation, and update status.
+* **Content:** Provides comprehensive information about healthcare providers, including their NPI number, name, position, organisation affiliation, and updated status.
 
 ### 4. ICD Data
 
