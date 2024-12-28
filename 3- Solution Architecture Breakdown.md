@@ -1,18 +1,22 @@
 # Solution Architecture for Healthcare Revenue Cycle Management (RCM)
 
-This project implements a comprehensive data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** using the **Medallion Architecture** in **Azure**. The architecture is divided into **Bronze, Silver, and Gold layers**, each serving a specific role in transforming raw data into actionable insights.
+This project implements a comprehensive data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** using the **Medallion Architecture** in **Azure**. The architecture is divided into **Landing**, **Bronze, Silver, and Gold layers**, each serving a specific role in transforming raw data into actionable insights.
 
 ## Medallion Architecture
 
-The solution leverages the **Medallion Architecture**, comprising three key layers: **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
+The solution leverages the **Medallion Architecture**, comprising three key layers: **Landing**, **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
+### 1. Landing Layer
 
-### 1. Bronze Layer (Source of Truth)
+- **Purpose**: Serves as the entry point exclusively for claims data in CSV format, uploaded by insurance providers.
+- **Data Format**: CSV files
+- **Key Characteristics**: Immutable, raw data; no processing or transformation applied.
+
+### 2. Bronze Layer (Source of Truth)
 
 - **Purpose**: The Bronze layer serves as the initial landing zone for raw data from various sources. It stores data in its native format with minimal transformations, ensuring immutability and serving as the single source of truth for downstream processes.
   
 - **Data Sources**:
     - **EMR Data**: Ingested from Azure SQL DB in Parquet format.
-    - **Claims Data**: Converted from CSV to Parquet format.
     - **NPI and ICD Codes**: Extracted from public APIs and stored in Parquet format.
     - **CPT Code Data**: Obtained from a public API in Parquet format.
 
@@ -22,7 +26,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
     - Data is **immutable**, preserving the original raw format.
     - Acts as the **single source of truth** for all downstream processes.
 
-### 2. Silver Layer (Clean and Enriched Data)
+### 3. Silver Layer (Clean and Enriched Data)
 
 - **Purpose**: The Silver layer contains cleaned, enriched, and standardized data ready for analysis and reporting.
   
@@ -33,7 +37,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 - **Data Format**: Data is stored in **Delta tables** in the Silver layer, which provide ACID transactions, enabling updates and improved data quality management.
 
-### 3. Gold Layer (Facts and Dimensions)
+### 4. Gold Layer (Facts and Dimensions)
 
 - **Purpose**: The Gold layer contains curated, aggregated data modeled into fact and dimension tables for business reporting and KPI generation.
 
