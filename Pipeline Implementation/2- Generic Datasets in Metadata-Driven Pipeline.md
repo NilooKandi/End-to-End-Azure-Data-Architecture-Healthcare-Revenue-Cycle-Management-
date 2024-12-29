@@ -12,19 +12,22 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **Schema name**
   - **Table name**
 
-<img width="710" alt="image" src="https://github.com/user-attachments/assets/60a07c6f-d267-4097-9945-bc735cac1942" />
+![image](https://github.com/user-attachments/assets/81b9052c-faa8-463d-b9c1-9faa5ce62b3e)
+
 
 ---
 
 ## **2. Generic ADLS Parquet Dataset**
 
 - **Purpose:**  
-  Manages **Parquet files** in **Azure Data Lake Storage (ADLS)** for efficient storage and retrieval.
+  Manages any **Parquet files** in **Azure Data Lake Storage (ADLS)** for efficient storage and retrieval.
 
 - **Key Parameters:**
   - **Container name**
   - **File path**
   - **File name**
+
+![image](https://github.com/user-attachments/assets/6b27e614-4b72-4c7f-b7f4-e282bc1cd3e9)
 
 
 ---
@@ -39,7 +42,8 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **File path** `EMR` folder 
   - **File name** `load_config.csv`
 
-![image](https://github.com/user-attachments/assets/0794c8ed-1d4b-4484-b63f-64adf6d59746)
+![image](https://github.com/user-attachments/assets/77f07b07-9269-40be-8b16-38371d414d20)
+
 
 ---
 
