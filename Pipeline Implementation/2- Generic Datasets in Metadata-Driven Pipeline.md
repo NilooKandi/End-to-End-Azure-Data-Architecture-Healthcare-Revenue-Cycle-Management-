@@ -35,9 +35,9 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   Processes **delimited text files** stored in ADLS or other cloud storage locations. [Config file](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Datasets/load_config.csv)
 
 - **Key Parameters:**
-  - **Container name** 'configs'
-  - **File path**
-  - **File name**
+  - **Container name** `configs`
+  - **File path** `EMR` folder 
+  - **File name** `load_config.csv`
 
 ![image](https://github.com/user-attachments/assets/0794c8ed-1d4b-4484-b63f-64adf6d59746)
 
