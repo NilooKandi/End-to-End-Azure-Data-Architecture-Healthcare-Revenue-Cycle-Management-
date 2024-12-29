@@ -3,19 +3,31 @@
 A metadata-driven pipeline built using **ADF** that processes EMR data from **Azure SQL DB**, storing it in **Parquet format** in the **bronze layer** in **ADLS Gen2**.
 
 ## **Pipeline Components**
-The audit table was implemented as a core component to enable intelligent data processing decisions and maintain data governance through tracking load history, making the pipeline truly metadata-driven. It serves as a critical monitoring system - tracking pipeline success, enabling performance monitoring, supporting troubleshooting, and verifying data completeness, thereby ensuring reliable and traceable data processing throughout the pipeline.
+The audit table (Delta Table) was implemented as a core component to enable intelligent data processing decisions and maintain data governance through tracking load history, making the pipeline truly metadata-driven. It serves as a critical monitoring system - tracking pipeline success, enabling performance monitoring, supporting troubleshooting, and verifying data completeness, thereby ensuring reliable and traceable data processing throughout the pipeline.
 
 ### 1. Linked Services
 
-- **Azure SQL Database** (Source)
-- **Azure Data Lake Storage Gen2** (Target)
-- **Delta Lake** (Audit Logging)
+- **Azure SQL DB** (Source)
+- **ADLS Gen2** (Target)
+- **Delta Lake** (Delta Lake where the audit table is stored)
 - **Key Vault** (Secure Credential Management)
+  
+### 2. **Datasets**
+
+# Dataset Types Overview
+
+This project utilises the following dataset types:
+
+- **Azure SQL DB:** (Source database tables, including database name, schema, and table name).
+- **Delimited Text Dataset:** (Configuration files stored in **ADLS Gen 2** in CSV format). 
+- **Parquet Dataset:** (Transformed data stored in **ADLS Gen 2** in **Parquet format**).
+- **Delta Lake Dataset:** (Used for **audit logging and tracking** in **Delta Lake** on **ADLS Gen 2**). 
+
 
 ### **1. Configuration**
 - A **configuration file** is stored as a **CSV** in the `configs/EMR` folder within the ADLS Gen 2 storage account.
 - The configuration file contains metadata information such as:
-  - **Source database** and **tables**
+  - **Source database**, **Schema**, and **tables**
   - **Load type** (either **incremental** or **full**)
   - **Watermark columns** for incremental loads
   - **Target path** in the **bronze layer**
