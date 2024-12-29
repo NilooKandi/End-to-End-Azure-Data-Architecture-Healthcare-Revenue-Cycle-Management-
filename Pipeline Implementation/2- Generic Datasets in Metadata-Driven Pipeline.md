@@ -12,8 +12,6 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **Schema name**
   - **Table name**
 
-- **Reusability:**  
-  A single dataset definition can serve multiple tables by passing the appropriate parameters at runtime.
 <img width="710" alt="image" src="https://github.com/user-attachments/assets/60a07c6f-d267-4097-9945-bc735cac1942" />
 
 ---
@@ -28,8 +26,6 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **File path**
   - **File name**
 
-- **Format:**  
-  Optimised for **Parquet format**, which is both storage-efficient and fast for querying.
 
 ---
 
@@ -42,10 +38,8 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **Container name**
   - **File path**
   - **File name**
-  - **Delimiter**
 
-- **Flexibility:**  
-  Adapts to various text file formats by allowing different delimiters (e.g., comma, tab) and file locations.
+![image](https://github.com/user-attachments/assets/0794c8ed-1d4b-4484-b63f-64adf6d59746)
 
 ---
 
