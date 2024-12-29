@@ -9,7 +9,7 @@ The audit table (Delta Table) was implemented as a core component to enable inte
 
 - **Azure SQL DB** (Source)
 - **ADLS Gen2** (Target)
-- **Delta Lake** (Delta Lake where the audit table is stored)
+- **Delta Lake** (Delta Lake where the audit table is stored) [See Audit Table Code here](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/audit_table_ddl.txt)
 - **Key Vault** (Secure Credential Management)
   
 ### 2. **Datasets**
