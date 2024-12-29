@@ -35,7 +35,7 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   Processes **delimited text files** stored in ADLS or other cloud storage locations. [Config file](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Datasets/load_config.csv)
 
 - **Key Parameters:**
-  - **Container name**
+  - **Container name** 'configs'
   - **File path**
   - **File name**
 
