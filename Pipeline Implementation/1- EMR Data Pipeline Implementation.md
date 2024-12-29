@@ -1,10 +1,16 @@
-## EMR Data Pipeline Implementation
+## Overview
 
-This section demonstrates the implementation of an **EMR data pipeline** using Azure Data Factory (ADF) and other components from the Azure data engineering stack. It focuses on a healthcare domain use case, processing data originating from **Azure SQL DB** and storing it in a **bronze layer** on Azure Data Lake Storage (ADLS Gen 2).
+A metadata-driven pipeline built using **ADF** that processes EMR data from **Azure SQL DB**, storing it in **Parquet format** in the **bronze layer** in **ADLS Gen2**.
 
-### **Pipeline Overview**
+## **Pipeline Components**
+The audit table was implemented as a core component to enable intelligent data processing decisions and maintain data governance through tracking load history, making the pipeline truly metadata-driven. It serves as a critical monitoring system - tracking pipeline success, enabling performance monitoring, supporting troubleshooting, and verifying data completeness, thereby ensuring reliable and traceable data processing throughout the pipeline.
 
-The pipeline follows a **metadata-driven architecture** for flexible and scalable processing. Below are the key steps involved in the implementation:
+### 1. Linked Services
+
+- **Azure SQL Database** (Source)
+- **Azure Data Lake Storage Gen2** (Target)
+- **Delta Lake** (Audit Logging)
+- **Key Vault** (Secure Credential Management)
 
 ### **1. Configuration**
 - A **configuration file** is stored as a **CSV** in the `configs/EMR` folder within the ADLS Gen 2 storage account.
