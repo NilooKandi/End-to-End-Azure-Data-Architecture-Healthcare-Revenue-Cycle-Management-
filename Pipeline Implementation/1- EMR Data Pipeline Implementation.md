@@ -14,6 +14,77 @@ The audit table (Delta Table) was implemented as a core component to enable inte
   
 ### 2. **Datasets**
 
+Our pipeline leverages **generic, reusable datasets** that adapt to different sources through parameterisation. This approach allows for a flexible, scalable, and maintainable pipeline design. Below is an overview of how each dataset is structured and used in the pipeline:
+
+## **1. Generic SQL Dataset**
+
+- **Purpose:**  
+  Handles any table from **Azure SQL Database** by parameterizing the database, schema, and table names.
+
+- **Key Parameters:**
+  - **Database name**
+  - **Schema name**
+  - **Table name**
+
+- **Reusability:**  
+  A single dataset definition can serve multiple tables by passing the appropriate parameters at runtime.
+![image](https://github.com/user-attachments/assets/9cdd8cb1-7390-4a64-b3b8-18ca593d8986)
+
+---
+
+## **2. Generic ADLS Parquet Dataset**
+
+- **Purpose:**  
+  Manages **Parquet files** in **Azure Data Lake Storage (ADLS)** for efficient storage and retrieval.
+
+- **Key Parameters:**
+  - **Container name**
+  - **File path**
+  - **File name**
+
+- **Format:**  
+  Optimized for **Parquet format**, which is both storage-efficient and fast for querying.
+
+---
+
+## **3. Generic Flat File Dataset**
+
+- **Purpose:**  
+  Processes **delimited text files** (e.g., CSV) stored in ADLS or other cloud storage locations.
+
+- **Key Parameters:**
+  - **Container name**
+  - **File path**
+  - **File name**
+  - **Delimiter**
+
+- **Flexibility:**  
+  Adapts to various text file formats by allowing different delimiters (e.g., comma, tab) and file locations.
+
+---
+
+## **Benefits**
+
+- **Reduces Code Redundancy:**  
+  By using parameterized datasets, we avoid creating separate dataset definitions for each source.
+
+- **Simplifies Maintenance:**  
+  Changes to the dataset structure are handled in one place, reducing maintenance overhead.
+
+- **Enables Easy Scaling:**  
+  New sources can be added by simply passing different parameters, making the pipeline easily extensible.
+
+- **Streamlines Pipeline Configuration:**  
+  The use of generic datasets simplifies the overall configuration, as you don't need to define separate datasets for each data source.
+
+- **Promotes Consistent Data Handling:**  
+  Consistent dataset management ensures that all data is processed using the same structure, improving reliability and reducing errors.
+
+---
+
+This **generic dataset approach** empowers the pipeline to process multiple data sources efficiently without the need to create separate dataset definitions for each one, thus promoting scalability and maintainability.
+
+
 # Dataset Types Overview
 
 This project utilises the following dataset types:
