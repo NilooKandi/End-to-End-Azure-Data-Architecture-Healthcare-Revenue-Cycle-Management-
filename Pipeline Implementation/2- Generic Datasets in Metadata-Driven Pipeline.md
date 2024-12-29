@@ -27,8 +27,7 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   - **File path**
   - **File name**
 
-![image](https://github.com/user-attachments/assets/6b27e614-4b72-4c7f-b7f4-e282bc1cd3e9)
-
+![image](https://github.com/user-attachments/assets/f9c0453c-8606-45b3-bd41-1a6a7b1593b5)
 
 ---
 
@@ -38,14 +37,28 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
   Processes **delimited text files** stored in ADLS or other cloud storage locations. [Config file](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Datasets/load_config.csv)
 
 - **Key Parameters:**
-  - **Container name** `configs`
-  - **File path** `EMR` folder 
-  - **File name** `load_config.csv`
+  - **Container name** (e.g. `configs`)
+  - **File path** (e.g. `EMR` folder )
+  - **File name** (e.g. `load_config.csv`)
 
 ![image](https://github.com/user-attachments/assets/77f07b07-9269-40be-8b16-38371d414d20)
 
 
 ---
+## **4. Databricks Delta Lake Dataset
+
+- **Purpose:**  
+  Manages the interaction with the **audit table** in Databricks Delta Lake, specifically for tracking load operations and other metadata related to data processing.
+
+-**Key Parameters** 
+
+- **Schema name:**  `audit` (the schema where the audit table is stored in the Delta Lake)
+- **Table name:**   `load_logs` (the specific audit table used to log load events)
+
+![image](https://github.com/user-attachments/assets/84d6cd86-aca8-4a2b-b237-4276d2e12d3a)
+
+---
+
 
 ## **Benefits**
 
