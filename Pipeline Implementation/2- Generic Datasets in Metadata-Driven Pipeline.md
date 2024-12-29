@@ -45,7 +45,7 @@ Our pipeline leverages **generic, reusable datasets** that adapt to different so
 
 
 ---
-## **4. Databricks Delta Lake Dataset
+## 4. Databricks Delta Lake Dataset
 
 - **Purpose:**  
   Manages the interaction with the **audit table** in Databricks Delta Lake, specifically for tracking load operations and other metadata related to data processing.
