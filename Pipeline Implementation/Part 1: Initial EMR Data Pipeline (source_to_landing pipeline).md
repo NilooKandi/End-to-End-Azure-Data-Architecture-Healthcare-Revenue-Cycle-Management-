@@ -5,7 +5,12 @@ The **source_to_landing pipeline** in Azure Data Factory (ADF) orchestrates the 
 ### Pipeline Breakdown
 
 1. **Read Configuration File (Lookup Activity)**:  
-   The pipeline begins by reading a configuration file (in CSV format) stored in **Azure Data Lake Storage Gen2 (ADLS Gen2)**. This file contains metadata about the data sources and targets, such as database names, table names, load types (full or incremental), and target paths in ADLS Gen2.
+   The pipeline begins by reading the configuration file (`configs/emr/load_config.csv`) stored in **ADLS Gen2**. This file contains metadata about the data sources and targets, such as database names, table names, load types (full or incremental), and target paths in ADLS Gen2.
+   
+![image](https://github.com/user-attachments/assets/6be77b6e-5e4f-4ad5-9ebf-0f1ea413f5df)
+
+![image](https://github.com/user-attachments/assets/c6a2c016-880c-4375-bbac-c09cad32ee60)
+
 
 2. **Iterate through Each Data Source (ForEach Activity)**:  
    The pipeline then iterates through each row in the configuration file, processing one data source (table) at a time.
