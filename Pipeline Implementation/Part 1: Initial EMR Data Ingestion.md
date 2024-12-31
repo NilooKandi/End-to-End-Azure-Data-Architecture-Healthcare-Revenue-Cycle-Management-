@@ -66,15 +66,63 @@ formatDateTime(utcNow(), '%d'))
 - **Determine Load Type (If Condition2 Activity)**:  
    The pipeline checks the `load_type` field from the configuration file to determine if a full load or an incremental load is required.
 
-   - **Full Load**: If `load_type` is `full`, a copy activity reads the entire table from the Azure SQL database and writes it as a Parquet file to the **bronze layer** in ADLS Gen2.
+   - **Full Load: If the condition is true**: If `load_type` is `full`, a copy activity reads the entire table from the Azure SQL database and writes it as a Parquet file to the **bronze layer** in ADLS Gen2.
 ```
 @equals(items().loadtype, 'Full')
 ```
 ![image](https://github.com/user-attachments/assets/36b6220e-e53c-4a0c-bff5-c52f2f9ce5a8)
 
-   - **Incremental Load**: If `load_type` is `incremental`, the pipeline first retrieves the latest load timestamp from the audit table (stored as a Delta table in Databricks). A copy activity then reads only the new or updated records from the Azure SQL Database based on a watermark column (typically a last modified date) and appends them to the existing Parquet file in the bronze layer.
- 
+***If “If condition” holds true => Full Load => Copy all data from the database
+table. => Enter Log details in the audit table***
 
+
+***Folder and File Structure***<br>
+
+**Bronze Container:**<br>
+Source Path: bronze/hosa<br>
+Target Path for Data Loads: bronze/<target-path><br>
+```
+@concat('select *, ''',item().datasource,''' as datasource from', item().tablename)
+```
+![image](https://github.com/user-attachments/assets/5093c55c-fefb-4e4e-b15c-2dd65b26458c)
+
+
+***Enter Log details in the audit table:***
+
+```
+Query: @concat('insert into
+audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolu
+mnname,loaddate) values (''',item().datasource,''',
+''',item().tablename,''',''',activity('Full_Load_CP').output.rowscopied,''',''',item().
+watermark,''',''',utcNow(),''')')
+```
+![image](https://github.com/user-attachments/assets/c18e8a0a-ad2d-4112-b859-7abbf4dee384)
+
+
+
+   - **Incremental Load: If the condition is false**: If `load_type` is `incremental`, the pipeline first retrieves the latest load timestamp from the audit table (stored as a Delta table in Databricks). A copy activity then reads only the new or updated records from the Azure SQL Database based on a watermark column (load date) and appends them to the existing Parquet file in the bronze layer.
+   - 
+  ***Fetch incremental data using the last fetched date) using Lookup=> Incremental load using copy activity
+     =>Enter log details in the audit table:***
+
+```
+@concat('select coalesce(cast(max(loaddate) as date),''','1900-01-01',''')
+as last_fetched_date from audit.load_logs where',' data_source=''',item().datasource,'''
+and tablename=''',item().tablename,'''')
+```
+
+![image](https://github.com/user-attachments/assets/ca540cbf-5295-4088-bdcc-38644e26a6a0)
+
+***Folder and File Structure***<br>
+
+**Bronze Container:**<br>
+Source Path: bronze/hosa<br>
+Target Path for Data Loads: bronze/<target-path><br>
+```
+@concat('select *,''',item().datasource,''' as datasource from ',item().tablename,' where ',item().watermark,' >= ''',
+activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
+```
+<img width="846" alt="image" src="https://github.com/user-attachments/assets/2644bf03-407f-4c30-b9b4-d72f76a1b840" />
 
 
 6. **Update Audit Table**:  
