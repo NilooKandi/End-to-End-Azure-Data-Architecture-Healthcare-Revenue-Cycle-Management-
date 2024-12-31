@@ -87,7 +87,7 @@ Target Path for Data Loads: bronze/<target-path><br>
 ![image](https://github.com/user-attachments/assets/5093c55c-fefb-4e4e-b15c-2dd65b26458c)
 
 
-***Enter Log details in the audit table:***
+***Enter Full Load Log details in the audit table:***
 
 ```
 Query: @concat('insert into
@@ -125,9 +125,66 @@ activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
 <img width="846" alt="image" src="https://github.com/user-attachments/assets/2644bf03-407f-4c30-b9b4-d72f76a1b840" />
 
 
-6. **Update Audit Table**:  
-   After each data load (whether full or incremental), the audit table in **Databricks** is updated with details of the load, including the timestamp, the number of rows copied, and the watermark column used.
+![image](https://github.com/user-attachments/assets/a4783bc3-8d87-4dde-8162-8b0b4f680139)
+
+***Enter Incremental Load Log details in the audit table:***
+
+```
+@concat('insert into audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolumnname,loaddate)
+ values (''',item().datasource,''', ''',item().tablename,''',''',
+activity('Incremental_Load_CP').output.rowscopied,''',''',item().watermark,''',''',utcNow(),''')')
+
+```
+![image](https://github.com/user-attachments/assets/514c21c1-405f-4837-89e2-e8e20e8c0d1a)
+
+
+This is the complete pipeline:
+Before running the pipeline for each activity, the “sequential” option is selected, as shown below.
+
+![image](https://github.com/user-attachments/assets/5dc247e2-a31c-45dc-9c97-b1ca6d319880)
+
+![image](https://github.com/user-attachments/assets/63b109f2-7abf-4734-87d0-cea29412942e)
 
 ---
+## Pipeline Limitation
+The current pipeline has a limitation where it processes tables sequentially rather than in parallel. 
 
-This pipeline structure follows a clear, modular flow that leverages **metadata-driven architecture** to ensure scalability and easy maintenance, enabling flexible data processing without hardcoded values.
+***Current Limitation***
+```
+{
+  "name": "ForEach_Config_Row",
+  "type": "ForEach", 
+  "typeProperties": {
+    "items": "@activity('lkp_EMR_configs').output.value",
+    "isSequential": true,
+    "activities": [...]
+  }
+}
+```
+
+
+***Reason for Sequential Processing***
+The pipeline is forced to be sequential because:
+
+- The audit table has an auto-increment ID column
+- Parallel processing would cause conflicts when multiple activities try to insert records simultaneously
+- This auto-increment dependency requires sequential processing
+
+- ***Solution***
+
+Enable parallel processing in ForEach:
+
+```
+{
+  "name": "ForEach_Config_Row",
+  "type": "ForEach",
+  "typeProperties": {
+    "items": "@activity('lkp_EMR_configs').output.value",
+    "isSequential": false,
+    "batchCount": 5,
+    "activities": [...]
+  }
+}
+```
+
+This change allows multiple tables to be processed simultaneously, significantly improving pipeline performance.
