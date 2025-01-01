@@ -214,6 +214,7 @@ After the pipeline runs successfully, the following occurs:
   - **watermarkcolumnname**: The column used for incremental loads (used to track where the last load finished).
   - **loaddate**: The timestamp when the load operation completed.
 
+By triggering the pipeline and ensuring that the audit table is populated, you can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
 ---
 ## Pipeline Limitation
 The current pipeline has a limitation where it processes tables sequentially rather than in parallel. 
