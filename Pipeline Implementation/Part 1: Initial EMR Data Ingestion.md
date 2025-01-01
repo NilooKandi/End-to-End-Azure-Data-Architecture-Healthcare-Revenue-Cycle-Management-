@@ -218,45 +218,9 @@ After the pipeline runs successfully, the following occurs:
 
 By triggering the pipeline and ensuring that the audit table is populated, you can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
 ---
-## Pipeline Limitation
-The current pipeline has a limitation where it processes tables sequentially rather than in parallel. 
-
-***Current Limitation***
-```
-{
-  "name": "ForEach_Config_Row",
-  "type": "ForEach", 
-  "typeProperties": {
-    "items": "@activity('lkp_EMR_configs').output.value",
-    "isSequential": true,
-    "activities": [...]
-  }
-}
-```
+## Limitation
+- The current pipeline has a limitation where it processes tables sequentially rather than in parallel.
+- We have implemented a Hive metastore that is local to a Databricks workspace and is not recommended because other workspaces cannot see what tables you have.  It is always good to have a Unity Catalog for your metastore so that it can be shared across multiple workspaces, acting as a centralized metadata repository that allows every workspace to refer to the same information.
 
 
-***Reason for Sequential Processing***
-The pipeline is forced to be sequential because:
 
-- The audit table has an auto-increment ID column
-- Parallel processing would cause conflicts when multiple activities try to insert records simultaneously
-- This auto-increment dependency requires sequential processing
-
-- ***Solution***
-
-Enable parallel processing in ForEach:
-
-```
-{
-  "name": "ForEach_Config_Row",
-  "type": "ForEach",
-  "typeProperties": {
-    "items": "@activity('lkp_EMR_configs').output.value",
-    "isSequential": false,
-    "batchCount": 5,
-    "activities": [...]
-  }
-}
-```
-
-This change allows multiple tables to be processed simultaneously, significantly improving pipeline performance.
