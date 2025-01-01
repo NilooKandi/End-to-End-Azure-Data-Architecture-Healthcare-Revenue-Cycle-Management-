@@ -12,7 +12,51 @@ The **source_to_landing pipeline** in Azure Data Factory (ADF) orchestrates the 
 ![image](https://github.com/user-attachments/assets/c6a2c016-880c-4375-bbac-c09cad32ee60)
 
 
-2. ### Iterate through Each Data Source (ForEach Activity):  
+2. ### Audit Table Setup:
+
+The pipeline relies on an audit table in Databricks for tracking load operations and managing incremental processing:
+
+```sql
+CREATE SCHEMA IF NOT EXISTS audit;
+
+CREATE TABLE IF NOT EXISTS audit.load_logs (
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
+    data_source STRING,
+    tablename STRING, 
+    numberofrowscopied INT,
+    watermarkcolumnname STRING,
+    loaddate TIMESTAMP
+);
+```
+
+***"Components Description:"***
+
+- **id**: 
+  - Auto-incrementing identifier for each load operation.
+  - Ensures sequential processing of data loads.
+
+- **data_source**: 
+  - Source system identifier (e.g., `HospitalA`, `HospitalB`).
+  - Used to track the origin of the data being processed.
+
+- **tablename**: 
+  - Name of the processed table.
+  - Helps identify which table the data corresponds to.
+
+- **numberofrowscopied**: 
+  - Count of records processed during the load operation.
+  - Useful for monitoring the volume of data processed.
+
+- **watermarkcolumnname**: 
+  - Column used for incremental loads.
+  - Typically stores a value that helps in tracking the last successfully processed row, enabling efficient incremental data loading.
+
+- **loaddate**: 
+  - Timestamp of load completion.
+  - Marks when the load operation was finished, aiding in tracking the time of each data load event.
+
+
+3. ### Iterate through Each Data Source (ForEach Activity):  
    The pipeline then iterates through each row in the configuration file, processing one data source (table) at a time.
 
 ***"Processing Logic Within ForEach Activity: "***
@@ -146,6 +190,29 @@ Before running the pipeline for each activity, the “sequential” option is se
 ![image](https://github.com/user-attachments/assets/5dc247e2-a31c-45dc-9c97-b1ca6d319880)
 
 ![image](https://github.com/user-attachments/assets/63b109f2-7abf-4734-87d0-cea29412942e)
+
+---
+## Audit Table Population Process
+
+### 1. Triggering the Pipeline
+
+When triggered, the pipeline starts executing the data processing tasks, such as extracting, transforming, and loading (ETL) data into the destination tables.
+
+### 2. Data Population in the Audit Table
+
+After the pipeline runs successfully, the following occurs:
+
+![image](https://github.com/user-attachments/assets/7a110a8f-e630-4c1f-a180-b6a84fd5e66f)
+
+- The audit table is populated to track the details of each load operation.
+  
+- **Data Populated**: Upon successful completion of the pipeline, the following information is stored in the audit table:
+  - **id**: An auto-incrementing identifier for each load operation.
+  - **data_source**: The source system from which the data was extracted (e.g., `HospitalA`, `HospitalB`).
+  - **tablename**: The name of the table that was processed during the load.
+  - **numberofrowscopied**: The count of records processed.
+  - **watermarkcolumnname**: The column used for incremental loads (used to track where the last load finished).
+  - **loaddate**: The timestamp when the load operation completed.
 
 ---
 ## Pipeline Limitation
