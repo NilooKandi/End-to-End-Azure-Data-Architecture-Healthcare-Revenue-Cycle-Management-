@@ -82,7 +82,7 @@ table. => Enter Log details in the audit table***
 Source Path: bronze/hosa<br>
 Target Path for Data Loads: bronze/<target-path><br>
 ```
-@concat('select *, ''',item().datasource,''' as datasource from', item().tablename)
+@concat('SELECT *, ''',item().datasource,''' as datasource FROM ', item().tablename)
 ```
 ![image](https://github.com/user-attachments/assets/24e03e06-63a5-4d44-b3b2-eb496995cfba)
 
