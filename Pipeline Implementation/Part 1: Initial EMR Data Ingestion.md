@@ -84,7 +84,8 @@ Target Path for Data Loads: bronze/<target-path><br>
 ```
 @concat('select *, ''',item().datasource,''' as datasource from', item().tablename)
 ```
-![image](https://github.com/user-attachments/assets/5093c55c-fefb-4e4e-b15c-2dd65b26458c)
+![image](https://github.com/user-attachments/assets/24e03e06-63a5-4d44-b3b2-eb496995cfba)
+
 
 
 ***Enter Full Load Log details in the audit table:***
@@ -122,7 +123,8 @@ Target Path for Data Loads: bronze/<target-path><br>
 @concat('select *,''',item().datasource,''' as datasource from ',item().tablename,' where ',item().watermark,' >= ''',
 activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
 ```
-<img width="846" alt="image" src="https://github.com/user-attachments/assets/2644bf03-407f-4c30-b9b4-d72f76a1b840" />
+![image](https://github.com/user-attachments/assets/9223ed34-db31-46f6-b957-783b468068f1)
+
 
 
 ![image](https://github.com/user-attachments/assets/a4783bc3-8d87-4dde-8162-8b0b4f680139)
