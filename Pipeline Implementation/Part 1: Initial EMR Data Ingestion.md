@@ -191,6 +191,8 @@ Before running the pipeline for each activity, the “sequential” option is se
 
 ![image](https://github.com/user-attachments/assets/63b109f2-7abf-4734-87d0-cea29412942e)
 
+![image](https://github.com/user-attachments/assets/cd823dd9-240b-48f2-87b6-f4b028297c21)
+
 ---
 ## Audit Table Population Process
 
