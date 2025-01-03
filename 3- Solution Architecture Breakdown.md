@@ -64,7 +64,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 - **Azure SQL DB**: Stores the initial **EMR data** for the two hospitals.
 - **Azure Data Lake Storage (ADLS) Gen 2**: Serves as the primary storage for raw and processed data across all layers (Landing, Bronze, Silver, and Gold).
 - **Azure Key Vault**: Securely stores sensitive credentials, like access keys and API tokens, to enhance security and prevent hardcoding.
-- **Unity Catalog**: Enables centralized metadata management for the data lake, improving discoverability, data lineage, and collaboration.
+- **Unity Catalog**: Enables centralised metadata management for the data lake, improving discoverability, data lineage, and collaboration.
 
 ## Best Practices
 
