@@ -220,7 +220,7 @@ By triggering the pipeline and ensuring that the audit table is populated, you c
 ---
 ## Limitation
 - The current pipeline has a limitation where it processes tables sequentially rather than in parallel.
-- We have implemented a Hive metastore that is local to a Databricks workspace and is not recommended because other workspaces cannot see what tables you have.  It is always good to have a Unity Catalog for your metastore so that it can be shared across multiple workspaces, acting as a centralized metadata repository that allows every workspace to refer to the same information.
+- We have implemented a Hive metastore that is local to a Databricks workspace and is not recommended because other workspaces cannot see what tables you have.  It is always good to have a Unity Catalog for our metastore so that it can be shared across multiple workspaces, acting as a centralised metadata repository that allows every workspace to refer to the same information.
 
 
 
