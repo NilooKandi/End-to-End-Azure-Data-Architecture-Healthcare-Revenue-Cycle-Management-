@@ -243,7 +243,6 @@ The SQL code used to define tables explicitly references the Unity Catalog. For 
 %sql
 create schema if not exists tt_hc_adb_ws.audit;
 CREATE TABLE IF NOT EXISTS tt_hc_adb_ws.audit.load_logs (
-id BIGINT GENERATED ALWAYS AS IDENTITY,
 data_source STRING,
 tablename STRING,
 numberofrowscopied INT,
