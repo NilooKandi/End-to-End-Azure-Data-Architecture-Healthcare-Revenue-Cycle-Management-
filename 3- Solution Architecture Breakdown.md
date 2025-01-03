@@ -1,7 +1,7 @@
 # Solution Architecture for Healthcare Revenue Cycle Management (RCM)
 
-![image](https://github.com/user-attachments/assets/90f24123-4347-4064-b147-df7190544307)
 
+![image](https://github.com/user-attachments/assets/e6f82260-ccde-4b3b-a3fe-e14dcbdbedda)
 
 
 This project implements a comprehensive data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** using the **Medallion Architecture** in **Azure**. The architecture is divided into **Landing**, **Bronze, Silver, and Gold layers**, each serving a specific role in transforming raw data into actionable insights.
