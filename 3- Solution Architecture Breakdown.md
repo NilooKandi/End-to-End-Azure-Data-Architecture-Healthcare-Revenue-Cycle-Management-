@@ -69,9 +69,12 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 ## Best Practices
 
 - **Metadata-driven pipeline design**: A configuration file defines data sources and pipeline parameters, enhancing reusability and maintainability.
-- **Parallel pipeline execution**: Tasks are executed concurrently where possible, improving performance.
-- **Retry mechanisms**: Implement retries for failed tasks to ensure pipeline resilience.
+- **Parallel pipeline execution**: The initial sequential data processing was slow due to the auto-incrementing key in the audit table. By removing the auto-incrementing key and enabling parallel processing in Azure Data Factory, the pipeline now runs much faster, significantly improving efficiency.
+- **Implementing Azure Key Vault**:  Securely stores and accesses sensitive information such as passwords and access tokens and eliminates hardcoding of credentials in code, aligning with industry best practices.
+- **Utilising Unity Catalog for Metadata Storage**: Replaces the local Hive metastore with Unity Catalog for centralised metadata management and facilitates metadata sharing across multiple Databricks workspaces, boosting collaboration and discoverability.
 - **Naming conventions and folder structure**: Improve code organisation and readability.
+- **Implementing the "Is Active" Flag**:  The configuration file includes an "is active" flag to control which tables are processed by the pipeline. The pipeline checks this flag and only processes tables marked as active, providing more granular control over data ingestion.
+- **Retry mechanisms**: Implement retries for failed tasks to ensure pipeline resilience.
 
 
 This architecture offers a robust and scalable approach to building a data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** on **Azure**. By utilising **Azure Data Factory**, **Databricks**, and other Azure services, along with best practices in data engineering, the project enables healthcare organisations to gain valuable insights from their data and optimise their financial performance.
