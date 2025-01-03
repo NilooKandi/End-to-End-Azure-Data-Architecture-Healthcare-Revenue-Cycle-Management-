@@ -1,4 +1,4 @@
-# **Part 1: Initial EMR Data Pipeline (source_to_landing pipeline)**
+# **Initial EMR Data Pipeline (source_to_landing pipeline)**
 
 The **source_to_landing pipeline** in Azure Data Factory (ADF) orchestrates the movement and transformation of data. This pipeline is designed with a **metadata-driven architecture**, which enhances flexibility and maintainability by dynamically adapting to different data sources and targets based on external configuration files. Below is a breakdown of the pipeline structure based on the source:
 
