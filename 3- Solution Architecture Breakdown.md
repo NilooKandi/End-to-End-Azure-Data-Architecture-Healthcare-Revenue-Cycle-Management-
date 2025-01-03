@@ -83,7 +83,7 @@ This architecture offers a robust and scalable approach to building a data engin
 
 ### Pipeline Setup/Implementation or Storage Configuration
 
-The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, bronze, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [Setup code](...)
+The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, bronze, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [See Setup code](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py)
 
 
 
