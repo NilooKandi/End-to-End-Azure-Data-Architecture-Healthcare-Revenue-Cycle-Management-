@@ -1,6 +1,8 @@
 # End-to-End Data Engineering Pipeline for Healthcare Revenue Cycle Management (RCM) on Azure
 
-![image](https://github.com/user-attachments/assets/0eccd3a9-a819-4160-a827-5aa203f8dd45)
+![image](https://github.com/user-attachments/assets/3832ba06-73ea-4c9a-88ac-3e1c06e5f99a)
+
+
 
 
 ## Solution Architecture Breakdown
