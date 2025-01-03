@@ -38,8 +38,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
     - **Data Cleaning**: Null values are handled, data quality checks are applied, and bad records are quarantined.
     - **Common Data Model (CDM)**: Standardises data from different sources to resolve schema discrepancies and potential ID clashes (e.g., patient tables from different hospitals).
     - **Slowly Changing Dimension (SCD) Type 2**: Maintains historical records, ensuring that changes in patient demographics or other data are properly tracked.
-
-- **Data Format**: Data is stored in **Delta tables** in the Silver layer, which provides ACID transactions, enabling updates and improved data quality management.
+    - **Data Storage in Delta Tables**: Transformed data is stored in Delta tables in the silver layer. Delta tables, built on top of Parquet, provide ACID transactions and support updates, enabling updates and improved data quality management.
 
 ### 4. Gold Layer (Facts and Dimensions)
 
