@@ -37,6 +37,7 @@ This project utilises diverse datasets from multiple sources to build a comprehe
 - **Content:**
   - Stores **CPT codes** used to represent medical procedures and services performed during patient encounters.
 
+  [Difference between ICD codes CPT codes](https://www.simplepractice.com/blog/icd-codes-and-cpt-codes/)
 ---
 
 ### **Data Pipeline Architecture**
