@@ -216,11 +216,43 @@ After the pipeline runs successfully, the following occurs:
   - **watermarkcolumnname**: The column used for incremental loads (used to track where the last load finished).
   - **loaddate**: The timestamp when the load operation completed.
 
-By triggering the pipeline and ensuring that the audit table is populated, you can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
+  By triggering the pipeline and ensuring that the audit table is populated, we can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
 ---
-## Limitation
-- The current pipeline has a limitation where it processes tables sequentially rather than in parallel.
-- We have implemented a Hive metastore that is local to a Databricks workspace and is not recommended because other workspaces cannot see what tables you have.  It is always good to have a Unity Catalog for our metastore so that it can be shared across multiple workspaces, acting as a centralised metadata repository that allows every workspace to refer to the same information.
+### Current Limitation
+The current pipeline processes tables sequentially rather than in parallel, which may impact performance for large-scale data processing.
 
+## Unity Catalog Implementation
 
+This project uses the **Databricks Unity Catalog** to address the limitations of a local Hive metastore. The Unity Catalog provides a centralised location to manage data and metadata, improving data governance. Here's how the project utilises the Unity Catalog:
 
+## Key Features
+
+### 1. **Centralised Metadata Management**
+Rather than having metadata tied to a specific Databricks workspace, this project uses Unity Catalog to store metadata (such as schemas and tables) in a central location. This enables other Databricks workspaces to easily discover and access the data, promoting collaboration across teams and environments.
+
+### 2. **Schema Management**
+The project sets up **schemas** within the Unity Catalog to organise data in a meaningful way. These schemas are similar to databases in traditional systems. The following schemas are created:
+- **audit**: Used for logging data loading activities.
+- **gold**: Stores refined data, typically used for reporting.
+- **silver**: Contains processed data, mainly used by data scientists for further analysis.
+
+### 3. **Table Definitions**
+The SQL code used to define tables explicitly references the Unity Catalog. For example, the following code creates a table in the Unity Catalog:
+
+```sql
+%sql
+create schema if not exists tt_hc_adb_ws.audit;
+CREATE TABLE IF NOT EXISTS tt_hc_adb_ws.audit.load_logs (
+id BIGINT GENERATED ALWAYS AS IDENTITY,
+data_source STRING,
+tablename STRING,
+numberofrowscopied INT,
+watermarkcolumnname STRING,
+loaddate TIMESTAMP
+);
+```
+This specifies that the load_logs table should be created within the audit schema in the tt_hc_adb_ws catalog, which is managed by Unity Catalog.
+
+### 3. **Data Lineage Tracking**
+
+Unity Catalog allows for visualising the **lineage** of data as it flows through the pipeline. Users can access this feature by clicking the "lineage" option for a specific table within the catalog. This feature helps users understand the dependencies between different data assets and track the transformations applied to the data.
