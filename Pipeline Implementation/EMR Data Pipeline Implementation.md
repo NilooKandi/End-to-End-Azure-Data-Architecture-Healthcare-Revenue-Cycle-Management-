@@ -219,7 +219,7 @@ After the pipeline runs successfully, the following occurs:
   By triggering the pipeline and ensuring that the audit table is populated, we can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
 ---
 ### Current Limitation
-The current pipeline processes tables sequentially rather than in parallel, which may impact performance for large-scale data processing.
+The pipeline currently processes tables sequentially, which can be addressed by removing the auto-incrementing ID in the audit table and modifying the pipeline to run in parallel.
 
 ## Unity Catalog Implementation
 
