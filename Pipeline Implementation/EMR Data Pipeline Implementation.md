@@ -237,7 +237,7 @@ The project sets up **schemas** within the Unity Catalog to organise data in a m
 - **silver**: Contains processed data, mainly used by data scientists for further analysis.
 
 ### 3. **Table Definitions**
-The SQL code used to define tables explicitly references the Unity Catalog. For example, the following code creates a table in the Unity Catalog:
+The SQL code used to define tables explicitly references the Unity Catalog and removes the use of auto-increment functionality. For example, the following code creates a table in the Unity Catalog without relying on auto-increment for key generation:
 
 ```sql
 %sql
