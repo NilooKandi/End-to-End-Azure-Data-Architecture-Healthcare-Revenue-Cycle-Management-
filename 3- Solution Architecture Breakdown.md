@@ -79,6 +79,17 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 This architecture offers a robust and scalable approach to building a data engineering pipeline for **Healthcare Revenue Cycle Management (RCM)** on **Azure**. By utilising **Azure Data Factory**, **Databricks**, and other Azure services, along with best practices in data engineering, the project enables healthcare organisations to gain valuable insights from their data and optimise their financial performance.
 
+## Pipeline
+
+### Pipeline Setup/Implementation or Storage Configuration
+
+The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, bronze, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [Setup code](...)
+
+
+
+
+
+
 ---
 
 # Conceptual Entity-Relationship Diagram (ERD) for Gold Layer Data Model
@@ -104,11 +115,13 @@ This section provides a conceptual **Entity-Relationship Diagram (ERD)** that re
 - **Encounter to Transaction**: A one-to-many relationship, as a single encounter can generate multiple financial transactions, including billing and payments.
 - **Provider to Transaction**: A one-to-many relationship, as a provider can be associated with multiple transactions over time.
 - **Claim to Encounter**: A one-to-one or one-to-many relationship, as an encounter may lead to a claim being filed with an insurance company.
-  
+
+
+ 
 ### Use in Reporting:
 
 This ERD serves as the foundational data model for generating insights into key performance indicators (KPIs) related to **Accounts Receivable (AR)**, **payment delays**, **uncollected payments**, and other financial metrics in healthcare revenue cycle management.
 
-The final data model in the **Gold layer** aggregates and curates data from the **Bronze** and **Silver layers** to populate **fact** and **dimension** tables, which are optimised for business reporting and analytics.
+The final data model in the **Gold layer** aggregates and curates data from the **Bronze** and **Silver layers** to populate **fact** and **dimension** tables, which are optimised for business reporting and analytics. 
 
 
