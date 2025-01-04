@@ -19,4 +19,10 @@ This project uses **four primary linked services**:
    Connects to the Azure storage account where raw data, Parquet files, and configuration files are stored. 
 
 3. **Azure Databricks Delta Lake Linked Service**:  
-   Interacts with Delta tables in Azure Databricks, especially for managing the audit table that tracks pipeline runs. 
+   Interacts with Delta tables in Azure Databricks, especially for managing the audit table that tracks pipeline runs.
+
+4. **Linked Service for Key Vault**:
+  A linked service for Key Vault in ADF grants the Data Factory service principal the necessary access permissions under the Key Vault's Access Policies to enable the Data Factory to access secrets during the linked service creation process.
+
+5. **Linked Service for Databricks (to Execute Notebooks)**:
+   This linked service is for running data transformations and processing logic defined in Databricks notebooks as part of a larger data pipeline orchestrated by Data Factory. The Databricks linked service is updated to use the secret scope for credentials instead of directly providing the storage account ke
