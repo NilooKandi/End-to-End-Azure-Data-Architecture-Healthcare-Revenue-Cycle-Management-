@@ -25,4 +25,6 @@ This project uses **four primary linked services**:
   A linked service for Key Vault in ADF grants the Data Factory service principal the necessary access permissions under the Key Vault's Access Policies to enable the Data Factory to access secrets during the linked service creation process.
 
 5. **Linked Service for Databricks (to Execute Notebooks)**:
-   This linked service is for running data transformations and processing logic defined in Databricks notebooks as part of a larger data pipeline orchestrated by Data Factory. The Databricks linked service is updated to use the secret scope for credentials instead of directly providing the storage account ke
+   This linked service is for running data transformations and processing logic defined in Databricks notebooks as part of a larger data pipeline orchestrated by Data Factory. The Databricks linked service is updated to use the secret scope for credentials instead of directly providing the storage account key.
+   ![image](https://github.com/user-attachments/assets/e8a12048-876d-4644-b6fa-0ad5a9ce50fb)
+
