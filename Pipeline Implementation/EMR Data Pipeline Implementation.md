@@ -30,30 +30,12 @@ CREATE TABLE IF NOT EXISTS audit.load_logs (
 ```
 
 ***"Components Description:"***
-
-- **id**: 
-  - Auto-incrementing identifier for each load operation.
-  - Ensures sequential processing of data loads.
-
-- **data_source**: 
-  - Source system identifier (e.g., `HospitalA`, `HospitalB`).
-  - Used to track the origin of the data being processed.
-
-- **tablename**: 
-  - Name of the processed table.
-  - Helps identify which table the data corresponds to.
-
-- **numberofrowscopied**: 
-  - Count of records processed during the load operation.
-  - Useful for monitoring the volume of data processed.
-
-- **watermarkcolumnname**: 
-  - Column used for incremental loads.
-  - Typically stores a value that helps in tracking the last successfully processed row, enabling efficient incremental data loading.
-
-- **loaddate**: 
-  - Timestamp of load completion.
-  - Marks when the load operation was finished, aiding in tracking the time of each data load event.
+  - **id**: An auto-incrementing identifier for each load operation.
+  - **data_source**: The source system from which the data was extracted (e.g., `HospitalA`, `HospitalB`).
+  - **tablename**: The name of the table that was processed during the load.
+  - **numberofrowscopied**: The count of records processed.
+  - **watermarkcolumnname**: The column used for incremental loads (used to track where the last load finished).
+  - **loaddate**: The timestamp when the load operation completed.
 
 
 3. ### Iterate through Each Data Source (ForEach Activity):  
@@ -208,14 +190,6 @@ After the pipeline runs successfully, the following occurs:
 
 - The audit table is populated to track the details of each load operation.
   
-- **Data Populated**: Upon successful completion of the pipeline, the following information is stored in the audit table:
-  - **id**: An auto-incrementing identifier for each load operation.
-  - **data_source**: The source system from which the data was extracted (e.g., `HospitalA`, `HospitalB`).
-  - **tablename**: The name of the table that was processed during the load.
-  - **numberofrowscopied**: The count of records processed.
-  - **watermarkcolumnname**: The column used for incremental loads (used to track where the last load finished).
-  - **loaddate**: The timestamp when the load operation completed.
-
   By triggering the pipeline and ensuring that the audit table is populated, we can maintain an organised log of all data load activities. This helps monitor the pipeline's execution, understand the volume of data processed, and ensure the correctness of data loads over time.
 ---
 ### Current Limitation
