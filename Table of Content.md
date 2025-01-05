@@ -78,6 +78,12 @@ This repository contains a comprehensive Azure Data Engineering solution for the
 
 ### **5. Pipeline Implementation**
 
+#### Linked Service
+
+#### Dataset
+
+#### Pipeline
+
 #### Configuration Management
 - **Configuration File Structure**: Description of the configuration file (`load_config.csv`) that manages pipeline parameters such as **load type**, **watermark column**, and **target path**.
 - **Pipeline Improvement**: By making that paralle and implementing active/inactive
