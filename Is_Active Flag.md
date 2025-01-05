@@ -1,70 +1,182 @@
 # Active/Inactive Flag Implementation in ADF Pipeline
 
-The **Active/Inactive flag** implementation utilizes the `"is_active"` column in the configuration file to determine which tables should undergo data processing in the `pl_emr_src_to_landing` pipeline. This setup provides **granular control** over data ingestion, allowing selective inclusion or exclusion of tables based on the flag's value.
+## Previous Pipeline Challenges
 
-## Configuration File Structure
+**1- Monolithic Structure**
 
-The configuration file, typically in CSV format, contains essential details for each table, including:
-
-- **Database Name**
-- **Data Source**
-- **Table Name**
-- **Load Type**
-- **Watermark Column**
-- **Target Path**
-- **Active/Inactive Flag** (`"is_active"` column)
-
-### Active/Inactive Flag Values
-
-- **'1': Active** - The pipeline will process the table.
-
-![image](https://github.com/user-attachments/assets/77d6ae41-1f9a-42e2-bc75-446e38d850a3)
-
-## Pipeline Implementation
-
-The `pl_emr_src_to_landing` pipeline leverages the **Active/Inactive flag** in the following manner:
-
-1. **Configuration Lookup:**  
-   A **Lookup activity** is used to read the configuration file, retrieving table-specific information, including the `"is_active"` flag.
-
-2. **ForEach Iteration:**  
-   A **ForEach activity** iterates over each entry (row) in the configuration, where each row represents a potential table to be processed.
-
-3. **Flag Check:**  
-   Inside the ForEach loop, an **If Condition activity** evaluates the `"is_active"` flag for the current table:
-
-   - **Active (`item().is_active = '1'`)**:  
-     The pipeline proceeds with data ingestion, including steps like:
-     - Checking for existing files.
-     - Archiving files if necessary.
-     - Determining the load type (full or incremental).
-     - Performing the corresponding data loading operations.
-
-
-### Benefits of Active/Inactive Flag
-
-- **Selective Processing:**  
-  Enables precise control over which tables are ingested without modifying the core logic of the pipeline.
-
-- **Flexibility:**  
-  Facilitates adjustments to the data ingestion workflow by simply modifying the `"is_active"` flag in the configuration file, without needing to edit the pipeline itself.
-
-- **Maintainability:**  
-  Enhances the pipeline's maintainability by providing an easy-to-manage method for including or excluding tables based on the configuration file.
-
-## Child Pipeline Execution (`pl_copy_from_emr`)
-
-The pipeline also makes use of an **Execute Pipeline activity** within an If Condition to call a child pipeline, `pl_copy_from_emr`. This child pipeline handles the actual data copying process, determined by whether the data load is a **full load** or **incremental load**.
+Before implementing the is_Active flag and child pipeline, we had a single pipeline handling:
 ```
-@equals(pipeline().parameters.Load_Type, 'Full')
+Pipeline: pl_emr_src_to_landing
+├── Lookup (Config File)
+├── ForEach
+    ├── Check File Exists
+    ├── Archive Files
+    ├── Full Load Copy
+    ├── Incremental Load Copy
+    └── Write Audit Logs
 ```
-### How It Works:
+**2- Key Issue**
 
-- The **If Condition** checks if the table is active (`item().is_active = '1'`).
-- If active, it proceeds with data ingestion; otherwise, it bypasses this table and moves on to the next one in the loop.
-- The child pipeline ensures that the data copying logic is reusable and modular for various tables.
+**Complex Control Flow**
+- All tables processed regardless of need
+- No way to skip specific tables
+- Complex error handling
 
-## Conclusion
+**Performance Bottlenecks**
+- Sequential processing required
+- Long pipeline execution times
+- Resource inefficiency
 
-This **Active/Inactive flag** mechanism provides a flexible and maintainable approach to control the data processing flow. By modifying the `"is_active"` flag in the configuration file, you can easily manage which tables are processed without changing the pipeline's core logic.
+**Maintenance Challenges**
+- Hard to modify individual components
+- Difficult to test changes
+- Complex debugging process
+
+## New Modular Approach
+
+## 1- Child Pipeline (Query and Dataset Configuration for pl_copy_from_emr) ##
+![image](https://github.com/user-attachments/assets/4bd6b996-3720-4066-8d5b-43ec35df5b6b)
+
+***Dataset Settings (Same for Both Loads)***
+
+First, we create a new pipeline that will handle the data copying logic:
+
+****1. Source Dataset****
+
+```
+{
+  "dataset": {
+    "referenceName": "generic_sql_ds",
+    "type": "DatasetReference",
+    "parameters": {
+      "db_name": "@pipeline().parameters.database",
+      "schema_name": "@split(pipeline().parameters.tablename, '.')[0]",
+      "table_name": "@split(pipeline().parameters.tablename, '.')[1]"
+    }
+  }
+}
+```
+****2. Sink Dataset****
+```
+{
+  "dataset": {
+    "referenceName": "generic_adls_parquet_ds",
+    "type": "DatasetReference",
+    "parameters": {
+      "container": "bronze",
+      "file_path": "@pipeline().parameters.targetpath",
+      "file_name": "@split(pipeline().parameters.tablename, '.')[1]"
+    }
+  }
+}
+```
+
+***Query Configurations***
+
+****1. Full Load Query****
+```
+@concat('select *,''',pipeline().parameters.datasource,'''
+ as datasource from ',pipeline().parameters.tablename)
+````
+
+****2. Incremental Load Query****
+```
+@concat('select *,''',pipeline().parameters.datasource,'''
+as datasource from ',pipeline().parameters.tablename,' where ',
+pipeline().parameters.watermark,' >= ''',
+activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
+```
+
+
+
+**1- Parent Pipeline** (`pl_emr_src_to_landing`)
+
+![image](https://github.com/user-attachments/assets/d5ac9cd9-6d5a-4d7d-8c7a-a55bb274cbb8)
+
+```
+Pipeline: pl_emr_src_to_landing
+├── Lookup (Config File)
+└── ForEach
+    └── If Condition (@equals(item().is_active,'1'))
+        └── Execute Child Pipeline
+```
+## 2-Modifying Parent Pipeline (pl_emr_src_to_landing) ##
+
+***Pipeline Structure***
+```
+{
+  "name": "pl_emr_src_to_landing",
+  "properties": {
+    "activities": [
+      {
+        "name": "ForEach1",
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": false,
+          "batchCount": 5,
+          "activities": [
+            {
+              "name": "If Condition3",
+              "type": "IfCondition",
+              "expression": "@equals(item().is_active,'1')",
+              "activities": [
+                {
+                  "name": "Execute Pipeline1",
+                  "type": "ExecutePipeline",
+                  "dependsOn": [],
+                  "policy": {
+                    "wait": true
+                  },
+                  "typeProperties": {
+                    "pipeline": {
+                      "referenceName": "pl_copy_from_emr",
+                      "type": "PipelineReference"
+                    },
+                    "parameters": {
+                      "Load_Type": "@item().loadtype",
+                      "database": "@item().database",
+                      "tablename": "@item().tablename",
+                      "datasource": "@item().datasource",
+                      "targetpath": "@item().targetpath",
+                      "watermark": "@item().watermark"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+***Key Components:***
+
+****1- ForEach Activity****
+- Set for parallel processing
+- `isSequential`: false
+- `batchCount`: 5
+
+****2- If Condition (Active Check)****
+- **Name**: "If Condition3"
+- **Expression**: `@equals(item().is_active,'1')`
+
+****3- Execute Pipeline Activity****
+- Invokes child pipeline with parameters
+- Waits for completion (`"wait": true`)
+
+
+***Parameter Mapping***
+
+```
+{
+  "Load_Type": "@item().loadtype",
+  "database": "@item().database",
+  "tablename": "@item().tablename",
+  "datasource": "@item().datasource",
+  "targetpath": "@item().targetpath",
+  "watermark": "@item().watermark"
+}
+```
 
