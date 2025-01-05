@@ -179,4 +179,17 @@ Pipeline: pl_emr_src_to_landing
   "watermark": "@item().watermark"
 }
 ```
+![image](https://github.com/user-attachments/assets/1e969200-cadd-4ebe-994d-880d0cb910d7)
+
+## Benefits of Parameterisation
+
+- **Flexibility**:
+- Parameterisation allows you to change source or destination details without altering the pipeline structure, such as changing connection strings, file paths, or filter conditions.
+- **Reduced Risk of Error**
+- **Faster Deployment**
+- **Reduced Maintenance Costs**
+- **Faster Feature Implementation**
+- **Reduced Hard Coding**
+- **Resilience to Change**
+- **Suitability for Diverse Deployment Scenarios**
 
