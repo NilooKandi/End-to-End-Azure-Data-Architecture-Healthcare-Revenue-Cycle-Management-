@@ -35,6 +35,29 @@ Pipeline: pl_emr_src_to_landing
 ## New Modular Approach
 
 ## 1- Child Pipeline (Query and Dataset Configuration for pl_copy_from_emr) ##
+
+```
+Pipeline: pl_copy_from_emr
+├── Parameters
+│   ├── Source Dataset Settings
+│   │   ├── db_name
+│   │   ├── schema_name
+│   │   └── table_name
+│   └── Sink Dataset Settings
+│       ├── container: bronze
+│       ├── file_path
+│       └── file_name
+│
+└── If Condition1 (@equals(pipeline().parameters.Load_Type,'Full'))
+    ├── True: Full Load Copy Activity
+    │   ├── Source: Full Load Query
+    │   └── Sink: Parquet Format
+    └── False: Incremental Load
+        ├── Fetch_logs Activity
+        ├── Source: Incremental Query
+        └── Sink: Parquet Format
+```
+
 ![image](https://github.com/user-attachments/assets/4bd6b996-3720-4066-8d5b-43ec35df5b6b)
 
 ***Dataset Settings (Same for Both Loads)***
@@ -89,8 +112,23 @@ activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
 
 
 
-**1- Parent Pipeline** (`pl_emr_src_to_landing`)
+## 1- Parent Pipeline** (`pl_emr_src_to_landing`) ##
 
+```
+Pipeline: pl_emr_src_to_landing
+├── Lookup Activity (Load Config)
+└── ForEach (Batch: 5, Sequential: false)
+    └── If Condition3 (@equals(item().is_active,'1'))
+        └── Execute Pipeline (pl_copy_from_emr)
+            ├── Parameters
+            │   ├── Load_Type
+            │   ├── database
+            │   ├── tablename
+            │   ├── datasource
+            │   ├── targetpath
+            │   └── watermark
+            └── Policy (wait: true)
+```
 ![image](https://github.com/user-attachments/assets/d5ac9cd9-6d5a-4d7d-8c7a-a55bb274cbb8)
 
 ```
