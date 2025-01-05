@@ -17,7 +17,8 @@ The configuration file, typically in CSV format, contains essential details for 
 ### Active/Inactive Flag Values
 
 - **'1': Active** - The pipeline will process the table.
-- **'0': Inactive** - The pipeline will skip the table.
+
+![image](https://github.com/user-attachments/assets/77d6ae41-1f9a-42e2-bc75-446e38d850a3)
 
 ## Pipeline Implementation
 
@@ -39,8 +40,6 @@ The `pl_emr_src_to_landing` pipeline leverages the **Active/Inactive flag** in t
      - Determining the load type (full or incremental).
      - Performing the corresponding data loading operations.
 
-   - **Inactive (`item().is_active = '0'`)**:  
-     The pipeline skips the ingestion process for this table and moves to the next iteration of the ForEach loop.
 
 ### Benefits of Active/Inactive Flag
 
@@ -56,7 +55,9 @@ The `pl_emr_src_to_landing` pipeline leverages the **Active/Inactive flag** in t
 ## Child Pipeline Execution (`pl_copy_from_emr`)
 
 The pipeline also makes use of an **Execute Pipeline activity** within an If Condition to call a child pipeline, `pl_copy_from_emr`. This child pipeline handles the actual data copying process, determined by whether the data load is a **full load** or **incremental load**.
-
+```
+@equals(pipeline().parameters.Load_Type, 'Full')
+```
 ### How It Works:
 
 - The **If Condition** checks if the table is active (`item().is_active = '1'`).
