@@ -26,8 +26,6 @@ The **pl_end_to_end_healthcare pipeline** orchestrates the entire data flow, inc
 - **Active Flag Implementation**:  
   The pipeline logic now checks the `is_active` flag in the configuration file to determine whether a data source should be processed. This provides more control over which data sources are included in the pipeline.
 
-- **Improved Naming Conventions**:  
-  Naming conventions for linked services, datasets, pipelines, and variables have been improved to enhance readability and maintainability, ensuring easier future updates and troubleshooting.
 
 - **Unity Catalog Integration**:  
   The **Hive metastore** has been replaced with **Unity Catalog**, which provides a centralised metadata repository that can be accessed by multiple Databricks workspaces, improving metadata management and collaboration.
