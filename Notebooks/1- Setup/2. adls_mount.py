@@ -1,5 +1,5 @@
 # Databricks notebook source
-storageAccountName = "ttadlsdev"
+storageAccountName = "hcadlsdev01"
 storageAccountAccessKey = dbutils.secrets.get('adlsdev', 'access-key-ttadlsdev')
 mountPoints=["gold","silver","bronze","landing","configs"]
 for mountPoint in mountPoints:
