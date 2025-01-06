@@ -32,8 +32,8 @@ This project utilises diverse datasets from multiple sources to build a comprehe
   - Maps **ICD codes** to their corresponding descriptions, enabling the identification of specific diagnoses related to patient encounters.
 
 ## **5. CPT Code Data (Current Procedural Terminology)**
-- **Source:** Public API for **CPT codes**.
-- **Format:** Directly ingested into the **Bronze layer** in **Parquet format**.
+- **Source:** CSV flat files uploaded by third parties to the **Landing folder** in **ADLS Gen 2**.
+- **Format:** Initially in **CSV format**, then converted to **Parquet format** in the **Bronze layer**.
 - **Content:**
   - Stores **CPT codes** used to represent medical procedures and services performed during patient encounters.
 
