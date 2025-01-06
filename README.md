@@ -5,7 +5,7 @@
 
 ## Table of Contents
 
-### 1. [Project Overview](#Project Overview)
+### 1. [Project Overview](#1-project-overview)
 - [Healthcare Domain Introduction](#healthcare-domain-introduction)
   - [AR Management Overview](#ar-management-overview)
   - [KPI Requirements](#kpi-requirements)
