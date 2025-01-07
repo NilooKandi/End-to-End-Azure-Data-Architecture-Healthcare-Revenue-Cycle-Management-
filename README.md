@@ -89,6 +89,7 @@
 - [Silver to Gold](#silver-to-gold)
 
 #### C. [Transformation Logic](#c-transformation-logic)
+-[Common Data(CDM)]
 - [Data Quality Rules](#data-quality-rules)
 - [SCD Type 2 Implementation](#scd-type-2-implementation)
 - [Delta Lake Integration](#delta-lake-integration)
