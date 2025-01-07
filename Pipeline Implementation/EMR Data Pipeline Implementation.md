@@ -114,7 +114,7 @@ Target Path for Data Loads: bronze/<target-path><br>
 
 
 
-***Enter Full Load Log details in the audit table:***
+***Full Load Log details in the audit table:***
 
 ```
 Query: @concat('insert into
@@ -155,12 +155,16 @@ activity('Fetch_logs').output.firstRow.last_fetched_date,'''')
 
 ![image](https://github.com/user-attachments/assets/a4783bc3-8d87-4dde-8162-8b0b4f680139)
 
-***Enter Incremental Load Log details in the audit table:***
+***Incremental Load Log details in the audit table:***
 
 ```
-@concat('insert into audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolumnname,loaddate)
- values (''',item().datasource,''', ''',item().tablename,''',''',
-activity('Incremental_Load_CP').output.rowscopied,''',''',item().watermark,''',''',utcNow(),''')')
+@concat('insert into audit.load_logs(data_source,tablename,numberofrowscopied,watermarkcolumnname,loaddate) values (''', 
+        pipeline().parameters.datasource, ''',''', 
+        pipeline().parameters.tablename, ''',', 
+        activity('Incremental_Load_CP').output.rowscopied, ',', 
+        '''', pipeline().parameters.watermark, ''',''',
+        utcNow(), 
+        ''')')
 
 ```
 ![image](https://github.com/user-attachments/assets/514c21c1-405f-4837-89e2-e8e20e8c0d1a)
