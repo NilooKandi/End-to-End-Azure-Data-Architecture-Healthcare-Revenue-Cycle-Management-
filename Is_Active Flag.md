@@ -138,7 +138,7 @@ Pipeline: pl_emr_src_to_landing
     └── If Condition (@equals(item().is_active,'1'))
         └── Execute Child Pipeline
 ```
-## 2-Modifying Parent Pipeline (pl_emr_src_to_landing) ##
+### 2-Modifying Parent Pipeline (pl_emr_src_to_landing) ###
 
 ***Pipeline Structure***
 ```
@@ -218,6 +218,9 @@ Pipeline: pl_emr_src_to_landing
 }
 ```
 ![image](https://github.com/user-attachments/assets/1e969200-cadd-4ebe-994d-880d0cb910d7)
+
+
+<img width="888" alt="image" src="https://github.com/user-attachments/assets/93fc2974-76a2-406e-81c7-4fa5e0aebc1f" />
 
 ## Benefits of Parameterisation
 
