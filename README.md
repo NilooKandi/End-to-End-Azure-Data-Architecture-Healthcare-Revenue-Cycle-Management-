@@ -3,7 +3,7 @@
 ![image](https://github.com/user-attachments/assets/a0db1b48-693e-4ce6-8f3d-c06d3c67d57b)
 
 
-![image](https://github.com/user-attachments/assets/eb71c620-4684-429c-8eae-d8f8b874cb74)
+
 
 
 
@@ -130,9 +130,9 @@
 This project implements an end-to-end Azure data engineering pipeline to optimise the Healthcare Revenue Cycle Management (RCM) process. The pipeline ingests, processes, and transforms data from various sources, including electronic medical records (EMR), claims data, and medical code APIs, to generate insightful reports and KPIs for improved financial performance.
 
 
-# Conceptual Entity-Relationship Diagram (ERD) for Gold Layer Data Model
+# Conceptual Entity-Relationship Diagram (ERD) 
 
-<img width="934" alt="image" src="https://github.com/user-attachments/assets/bf3a8e09-56fd-48e7-91d9-1fff20ad2d80" />
+![image](https://github.com/user-attachments/assets/eb71c620-4684-429c-8eae-d8f8b874cb74)
 
 
 
