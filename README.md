@@ -106,20 +106,9 @@
 - [Performance Tracking](#performance-tracking)
 
 ### 7. [Data Analysis](#7-data-analysis)
-- [KPI Implementation](#kpi-implementation)
-- [Report Generation](#report-generation)
-- [Query Optimization](#query-optimization)
+- [Sample KPI Implementation](#kpi-implementation)
 
-### 8. [DevOps Integration](#8-devops-integration)
-- [GitHub Setup](#github-setup)
-- [Deployment Strategy](#deployment-strategy)
-- [Version Control](#version-control)
-- [CI/CD Pipeline](#cicd-pipeline)
 
-### 9. [Future Scope](#9-future-scope)
-- [Known Limitations](#known-limitations)
-- [Enhancement Plans](#enhancement-plans)
-- [Scaling Considerations](#scaling-considerations)
 
 
 
