@@ -80,14 +80,15 @@ By streamlining the data integration, transformation, and reporting processes, t
 
 ---
 
-## Tools and Technologies
+## System Architecture
 
-This project makes use of the following tools:
-
-- **Azure Data Factory (ADF)**: For orchestrating and managing data workflows.
-- **Azure Databricks**: For data processing and transformation.
-- **Azure Synapse Analytics**: For structured data storage and analytics.
-- **Python & SQL**: For data processing, manipulation, and querying.
+This project utilises a modern cloud-based data platform leveraging several Azure services:
+- **Azure SQL Database** houses the source EMR data for the two hospitals.
+- **Azure Data Lake Storage Gen2 (ADLS Gen2)** acts as the central data repository, storing data across the different layers of the Medallion architecture.
+- **Azure Data Factory (ADF)** orchestrates the end-to-end data pipeline, including data ingestion, transformation, and loading.
+- **Azure Databricks** provides a platform for data processing, cleansing, transformation, and creating fact and dimension tables, leveraging its integration with Delta Lake.
+- **Azure Key Vault** securely stores sensitive information like access keys and connection strings, enhancing security and compliance.
+- **Unity Catalog** serves as the centralised metadata repository, providing a unified view of data assets across the workspace.
 
 
 
