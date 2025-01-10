@@ -188,11 +188,15 @@ The primary goals of this project are to:
 - **Generate KPIs** like **AR > 90 days** and **Days in AR** to help the reporting team monitor and assess AR performance.
 - Provide insights to help **reduce collection periods**, improve cash flow, and ultimately enhance the financial health of hospitals.
 
-### Solution Approach
+## System Architecture
 
-The pipeline will be built using the **Azure Data Engineering Stack**, employing tools like **Azure Data Factory**, **Azure Databricks**, **Azure Synapse Analytics**, and **Power BI**. These tools will automate the data flow, perform necessary transformations, and enable KPI reporting.
-
-By streamlining the data integration, transformation, and reporting processes, this project will help hospitals optimise their **Accounts Receivable (AR)**, reduce the collection period, and improve overall financial management.
+This project utilises a modern cloud-based data platform leveraging several Azure services:
+- **Azure SQL Database** houses the source EMR data for the two hospitals.
+- **Azure Data Lake Storage Gen2 (ADLS Gen2)** acts as the central data repository, storing data across the different layers of the Medallion architecture.
+- **Azure Data Factory (ADF)** orchestrates the end-to-end data pipeline, including data ingestion, transformation, and loading.
+- **Azure Databricks** provides a platform for data processing, cleansing, transformation, and creating fact and dimension tables, leveraging its integration with Delta Lake.
+- **Azure Key Vault** securely stores sensitive information like access keys and connection strings, enhancing security and compliance.
+- **Unity Catalog** serves as the centralised metadata repository, providing a unified view of data assets across the workspace.
 
 
 
