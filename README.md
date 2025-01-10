@@ -2,7 +2,6 @@
 
 ![image](https://github.com/user-attachments/assets/a0db1b48-693e-4ce6-8f3d-c06d3c67d57b)
 
-
 ## Table of Contents
 
 ### 1. [Problem Statement](#1-problem-statement)
