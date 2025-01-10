@@ -4,23 +4,18 @@
 
 ## Table of Contents
 
-### 1. [Problem Statement](#1-problem-statement)
+#### 1. [Problem Statement](#1-problem-statement)
 - [a. Overview of the RCM Process](#a-overview-of-the-rcm-process)
 - [b. Key Challenges in Accounts Receivable (AR)](#b-key-challenges-in-accounts-receivable-ar)
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
-### 2. [System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-system-architecture-1)
-
-### 3. [Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
-
-### 4. [Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
-
-### 5. [Data Flow](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
-
-### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
-
-### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
+#### 2. [System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-system-architecture-1)
+#### 3. [Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
+#### 4. [Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
+#### 5. [Data Flow](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
+#### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
+#### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
 
 
 ## 1. Problem Statement
