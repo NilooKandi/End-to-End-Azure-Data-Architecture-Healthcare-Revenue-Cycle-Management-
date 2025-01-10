@@ -263,11 +263,39 @@ hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
 
 ## 5. Pipeline Implementation
 
-### a. Source to Landing
+### a. Source to Landing 
 
-- EMR Data Ingestion
-- Claims Data Processing
-- API Data Integration
+- [EMR Data Ingestion(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
+```
+Pipeline: EMR to Landing
+├── Lookup (load_config.csv)
+├── ForEach (Parallel Processing)
+│   ├── If Condition (@equals(item().is_active,'1'))
+│   │   └── Execute pl_copy_from_emr
+│   │       ├── Parameters
+│   │       │   ├── Load_Type
+│   │       │   ├── database
+│   │       │   ├── tablename
+│   │       │   ├── datasource
+│   │       │   └── watermark
+│   │       └── Copy Activity
+```
+
+- **Claims Data Processing**
+
+```
+Landing Integration
+├── Data Ingestion
+│   ├── Hospital A Claims (.csv)
+│   └── Hospital B Claims (.csv)
+└── File Placement
+    └── landing/claims/{hospital}/
+```
+
+- **API Data Integration**
+  - [ICD Codes Extract](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/2-%20API%20Extracts/ICD%20Code%20API%20extract.ipynb)
+  - [NPI Data Extract](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/2-%20API%20Extracts/NPI%20API%20extract.ipynb)
+
 
 
 ### b. Landing to Bronze
