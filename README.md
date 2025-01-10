@@ -12,8 +12,10 @@
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
 ### 2. [System Architecture](#2-system-architecture)
+- [a. Azure Components Used](#a-azure-components-used)
 
 ### 3. [Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
+- [a. ER Diagram Overview](#a-er-diagram-overview)
 
 
 
