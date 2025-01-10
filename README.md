@@ -22,16 +22,37 @@
 - [c. Unity Catalog Setup](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-unity-catalogue-setup)
 - [d. Databricks Environment Configuration](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#d-databricks-environment-configuration)
 
-#### 4. Data Integration Components
-- [a. Linked Services]()
-- [b. Datasets]()
-- [c. Metadata Configuration]()
+#### 4. [Data Integration Components](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#4-data-integration-components-1)
+- [a. Linked Services](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-linked-services)
+- [b. Datasets](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-datasets)
+- [c. Metadata Configuration](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-metadata-configuration)
 
-Configuration File Structure
-Parameter Management
-Active/Inactive Flag System
+#### 5. [Pipeline Implementation]()
+
+a. Source to Landing
+
+EMR Data Ingestion
+Claims Data Processing
+API Data Integration
 
 
+b. Landing to Bronze
+
+Data Format Conversion
+Initial Validation
+
+
+c. Bronze to Silver
+
+Data Quality Checks
+Common Data Model Implementation
+SCD Type 2 Processing
+
+
+d. Silver to Gold
+
+Fact Table Creation
+Dimension Table Processing
 
 #### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
 #### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
@@ -254,6 +275,33 @@ hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
 - Path Construction (@concat(item().targetpath, '/archive/'))
 ```
 
+
+## 5. Pipeline Implementation
+
+### a. Source to Landing
+
+- EMR Data Ingestion
+- Claims Data Processing
+- API Data Integration
+
+
+### b. Landing to Bronze
+
+- Data Format Conversion
+- Initial Validation
+
+
+### c. Bronze to Silver
+
+- Data Quality Checks
+- Common Data Model Implementation
+- SCD Type 2 Processing
+
+
+### d. Silver to Gold
+
+- Fact Table Creation
+- Dimension Table Processing
 
 
 
