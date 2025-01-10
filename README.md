@@ -10,8 +10,7 @@
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
-#### 2. [Infrastructure and Architecture]
-
+#### 2. [Infrastructure and Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-infrastructure-and-architecture-1)
 - [a. System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-system-architecture-1)
 - [b. Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
 - [c. Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
