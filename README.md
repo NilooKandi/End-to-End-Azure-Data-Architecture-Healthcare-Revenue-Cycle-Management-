@@ -15,6 +15,22 @@
 - [b. Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-conceptual-entity-relationship-diagram-erd)
 - [c. Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-medallion-architecture)
 
+#### 3. Azure Components Setup
+- [a. Resource Creation]()
+- [b. Security Implementation]()
+- [c. Unity Catalog Setup]()
+- [d. Databricks Environment Configuration]()
+
+#### 4. Data Integration Components
+- [a. Linked Services]()
+- [b. Datasets]()
+- [c. Metadata Configuration]()
+
+Configuration File Structure
+Parameter Management
+Active/Inactive Flag System
+
+
 
 #### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
 #### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
@@ -152,6 +168,48 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
     - Development of **dimension tables**, like `dim_patient`, `dim_provider`, `dim_department`, `dim_encounter`, `dim_icd_codes`, `dim_claims`, `dim_cpt_codes`, and `dim_npi` to provide context and details for the facts.
 
 - **Data Format**: Data is stored in **Delta tables**, optimised for reporting and analytical queries.
+
+
+## 3. Azure Components Setup
+
+### a. Resource Creation
+Essential Azure resources that form the foundation of our healthcare data engineering solution:
+- Resource Group for centralised management
+- ADLS Gen2 for hierarchical storage (landing, bronze, silver, gold, configs)
+- Azure SQL Databases for EMR data (hospital-a, hospital-b)
+- Azure Data Factory for pipeline orchestration
+- Azure Databricks for data processing
+- Azure Key Vault for secure credential management
+  
+### b. Security Implementation
+Secure access management across all components:
+- Key Vault stores all sensitive information (storage keys, DB credentials)
+- App Registrations enable service-to-service authentication
+- Access Policies control resource access permissions
+- Managed Identities provide secure service authentication
+
+### c. Unity Catalogue Setup
+Centralised metadata management solution:
+- Metastore configuration with dedicated storage
+- Catalogue creation (tt_hc_adb_ws) for workspace organization
+- Schema implementation (audit, bronze, silver, gold)
+- Cross-workspace access enablement
+- Data governance and access control
+### d. Databricks Environment Configuration
+Development environment setup:
+- [Mount points for ADLS Gen2 access](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py)
+- [Notebook organisation (/Setup, /API_extracts, /Silver, /Gold)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks)
+- [Audit table creation for pipeline monitoring](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/1.%20audit_ddl.md)
+- Cluster configuration for data processing
+
+
+
+
+
+
+
+
+
 
 
 
