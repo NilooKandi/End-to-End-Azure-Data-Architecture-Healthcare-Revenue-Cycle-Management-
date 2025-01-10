@@ -5,18 +5,18 @@
 
 ## Table of Contents
 
-### [1. Problem Statement](#1-problem-statement)
+### 1. [Problem Statement](#1-problem-statement)
 - [a. Overview of the RCM Process](#a-overview-of-the-rcm-process)
 - [b. Key Challenges in Accounts Receivable (AR)](#b-key-challenges-in-accounts-receivable-ar)
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
-### [2. System Architecture](#2-system-architecture)
+### 2. [System Architecture](#2-system-architecture)
 
-### [3. Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
+### 3. [Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
 
 
-## 1. Problem Statement
+## Problem Statement
 
 The **Revenue Cycle Management (RCM)** process is vital for hospitals to manage the financial side of healthcare services, ensuring they can continue providing quality care while maintaining financial stability. RCM covers the entire process, starting from when a patient books an appointment through to when the provider receives payment. This project is focused on improving the **Accounts Receivable (AR)** aspect, which tracks the money owed to the hospital by patients and insurers.
 
@@ -90,7 +90,7 @@ The primary goals of this project are to:
 - **Generate KPIs** like **AR > 90 days** and **Days in AR** to help the reporting team monitor and assess AR performance.
 - Provide insights to help **reduce collection periods**, improve cash flow, and ultimately enhance the financial health of hospitals.
 
-## 2. System Architecture
+## System Architecture
 
 This project utilises a modern cloud-based data platform leveraging several Azure services:
 - **Azure SQL Database** houses the source EMR data for the two hospitals.
@@ -102,7 +102,7 @@ This project utilises a modern cloud-based data platform leveraging several Azur
 
 
 
-## 3. Conceptual Entity-Relationship Diagram (ERD) 
+## Conceptual Entity-Relationship Diagram (ERD) 
 
 ![image](https://github.com/user-attachments/assets/eb71c620-4684-429c-8eae-d8f8b874cb74)
 
