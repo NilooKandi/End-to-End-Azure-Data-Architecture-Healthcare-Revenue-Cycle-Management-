@@ -181,6 +181,6 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 ### Pipeline Setup/Implementation or Storage Configuration
 
-The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, audit, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [See EMR Pipeline Implementation]([https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
+The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, audit, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [See EMR Pipeline Implementation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
 
 
