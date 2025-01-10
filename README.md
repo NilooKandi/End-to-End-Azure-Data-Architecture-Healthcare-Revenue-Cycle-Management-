@@ -5,17 +5,15 @@
 
 ## Table of Contents
 
-### 1. [Problem Statement](#1-problem-statement)
+### [1. Problem Statement](#1-problem-statement)
 - [a. Overview of the RCM Process](#a-overview-of-the-rcm-process)
 - [b. Key Challenges in Accounts Receivable (AR)](#b-key-challenges-in-accounts-receivable-ar)
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
-### 2. [System Architecture](#2-system-architecture)
+### [2. System Architecture](#2-system-architecture)
 
-### 3. [Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
-
-
+### [3. Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
 
 
 ## 1. Problem Statement
