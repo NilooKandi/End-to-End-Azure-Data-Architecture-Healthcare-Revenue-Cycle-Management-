@@ -14,7 +14,6 @@
 - [a. System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-system-architecture)
 - [b. Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-conceptual-entity-relationship-diagram-erd)
 - [c. Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-medallion-architecture)
-- [d. Data Flow Diagrams](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
 
 
 #### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
@@ -154,12 +153,6 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 - **Data Format**: Data is stored in **Delta tables**, optimised for reporting and analytical queries.
 
-### d. Data Flow Diagrams
-
-1. **Landing Layer**: Claims and CPT data uploaded by insurance and third-party providers in CSV format.
-2. **Bronze Layer**: Data from various sources (EMR databases, APIs) is ingested in **Parquet** format.
-3. **Silver Layer**: Data is cleansed, standardised, and enriched using techniques like data quality checks, CDM implementation, and SCD Type 2. Data is stored in **Delta tables**.
-4. **Gold Layer**: Data from the Silver layer is transformed into fact and dimension tables, also stored as **Delta tables** for optimised reporting.
 
 
 ## Best Practices
