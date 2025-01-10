@@ -15,11 +15,12 @@
 - [b. Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-conceptual-entity-relationship-diagram-erd)
 - [c. Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-medallion-architecture)
 
-#### 3. Azure Components Setup
-- [a. Resource Creation]()
-- [b. Security Implementation]()
-- [c. Unity Catalog Setup]()
-- [d. Databricks Environment Configuration]()
+#### 3. [Azure Components Setup](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-azure-components-setup-1)
+
+- [a. Resource Creation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-resource-creation)
+- [b. Security Implementation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-security-implementation)
+- [c. Unity Catalog Setup](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-unity-catalogue-setup)
+- [d. Databricks Environment Configuration](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#d-databricks-environment-configuration)
 
 #### 4. Data Integration Components
 - [a. Linked Services]()
