@@ -10,10 +10,14 @@
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
 - [d. Data Engineering Objectives](#d-data-engineering-objectives)
 
-#### 2. [System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-system-architecture-1)
-#### 3. [Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
-#### 4. [Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
-#### 5. [Data Flow](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
+#### 2. [Infrastructure and Architecture]
+
+- [a. System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-system-architecture-1)
+- [b. Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
+- [c. Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
+- [d. Data Flow Diagrams](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
+
+
 #### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
 #### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
 
@@ -92,7 +96,8 @@ The primary goals of this project are to:
 - **Generate KPIs** like **AR > 90 days** and **Days in AR** to help the reporting team monitor and assess AR performance.
 - Provide insights to help **reduce collection periods**, improve cash flow, and ultimately enhance the financial health of hospitals.
 
-## 2. System Architecture
+## 2. Infrastructure and Architecture
+### a. System Architecture
 
 This project utilises a modern cloud-based data platform leveraging several Azure services:
 - **Azure SQL Database** houses the source EMR data for the two hospitals.
@@ -102,23 +107,20 @@ This project utilises a modern cloud-based data platform leveraging several Azur
 - **Azure Key Vault** securely stores sensitive information like access keys and connection strings, enhancing security and compliance.
 - **Unity Catalog** serves as the centralised metadata repository, providing a unified view of data assets across the workspace.
 
-
-
-## 3. Conceptual Entity-Relationship Diagram (ERD) 
+### b. Conceptual Entity-Relationship Diagram (ERD) 
 
 ![image](https://github.com/user-attachments/assets/eb71c620-4684-429c-8eae-d8f8b874cb74)
 
-
-## Medallion Architecture
+### c. Medallion Architecture
 
 The solution leverages the **Medallion Architecture**, comprising three key layers: **Landing**, **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
-### 1. Landing Layer
+**1. Landing Layer**
 
 - **Purpose**: Serves as the entry point exclusively for claims data in CSV format, uploaded by insurance providers.
 - **Data Format**: CSV files
 - **Key Characteristics**: Immutable, raw data; no processing or transformation applied.
 
-### 2. Bronze Layer (Source of Truth)
+**2. Bronze Layer (Source of Truth)**
 
 - **Purpose**: The Bronze layer serves as the initial zone for raw data from EMR (Azure SQL DB) and NPI, ICD, and CPT (public API). It stores data in its native format with minimal transformations, ensuring immutability and serving as the single source of truth for downstream processes.
   
@@ -133,7 +135,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
     - Data is **immutable**, preserving the original raw format.
     - Acts as the **single source of truth** for all downstream processes.
 
-### 3. Silver Layer (Clean and Enriched Data)
+**3. Silver Layer (Clean and Enriched Data)**
 
 - **Purpose**: The Silver layer contains cleaned, enriched, and standardized data ready for analysis and reporting.
   
@@ -143,7 +145,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
     - **Slowly Changing Dimension (SCD) Type 2**: Maintains historical records, ensuring that changes in patient demographics or other data are properly tracked.
     - **Data Storage in Delta Tables**: Transformed data is stored in Delta tables in the silver layer. Delta tables, built on top of Parquet and incorporated additional logs, provide ACID transactions, support for data updates, efficient incremental loads, and versioned data history.
 
-### 4. Gold Layer (Facts and Dimensions)
+**4. Gold Layer (Facts and Dimensions)**
 
 - **Purpose**: The Gold layer contains curated, aggregated data modelled into fact and dimension tables for business reporting and KPI generation.
 
@@ -153,7 +155,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 - **Data Format**: Data is stored in **Delta tables**, optimised for reporting and analytical queries.
 
-## Data Flow
+### d. Data Flow Diagrams
 
 1. **Landing Layer**: Claims and CPT data uploaded by insurance and third-party providers in CSV format.
 2. **Bronze Layer**: Data from various sources (EMR databases, APIs) is ingested in **Parquet** format.
