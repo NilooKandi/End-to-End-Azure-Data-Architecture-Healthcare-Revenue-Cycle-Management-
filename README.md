@@ -14,6 +14,14 @@
 
 ### 3. [Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
 
+### 4. [Medallion Architecture]
+
+### 5. [Data Flow]
+
+### 6. [Best Practices]
+
+### 7. [Pipelines]
+
 
 ## 1. Problem Statement
 
@@ -106,6 +114,73 @@ This project utilises a modern cloud-based data platform leveraging several Azur
 ![image](https://github.com/user-attachments/assets/eb71c620-4684-429c-8eae-d8f8b874cb74)
 
 
+## Medallion Architecture
 
+The solution leverages the **Medallion Architecture**, comprising three key layers: **Landing**, **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
+### 1. Landing Layer
+
+- **Purpose**: Serves as the entry point exclusively for claims data in CSV format, uploaded by insurance providers.
+- **Data Format**: CSV files
+- **Key Characteristics**: Immutable, raw data; no processing or transformation applied.
+
+### 2. Bronze Layer (Source of Truth)
+
+- **Purpose**: The Bronze layer serves as the initial zone for raw data from EMR (Azure SQL DB) and NPI, ICD, and CPT (public API). It stores data in its native format with minimal transformations, ensuring immutability and serving as the single source of truth for downstream processes.
+  
+- **Data Sources**:
+    - **EMR Data**: Ingested from Azure SQL DB in Parquet format.
+    - **NPI and ICD Codes**: Extracted from public APIs and stored in Parquet format.
+    - **CPT Code Data**: Obtained from a public API in Parquet format.
+
+- **Data Format**: All datasets in the Bronze layer are stored in **Parquet** format, which offers efficient storage and optimal query performance for large datasets.
+
+- **Key Characteristics**:
+    - Data is **immutable**, preserving the original raw format.
+    - Acts as the **single source of truth** for all downstream processes.
+
+### 3. Silver Layer (Clean and Enriched Data)
+
+- **Purpose**: The Silver layer contains cleaned, enriched, and standardized data ready for analysis and reporting.
+  
+- **Key Processes**:
+    - **Data Cleaning**: Null values are handled, data quality checks are applied, and bad records are quarantined.
+    - **Common Data Model (CDM)**: Standardises data from different sources to resolve schema discrepancies and potential ID clashes (e.g., patient tables from different hospitals).
+    - **Slowly Changing Dimension (SCD) Type 2**: Maintains historical records, ensuring that changes in patient demographics or other data are properly tracked.
+    - **Data Storage in Delta Tables**: Transformed data is stored in Delta tables in the silver layer. Delta tables, built on top of Parquet and incorporated additional logs, provide ACID transactions, support for data updates, efficient incremental loads, and versioned data history.
+
+### 4. Gold Layer (Facts and Dimensions)
+
+- **Purpose**: The Gold layer contains curated, aggregated data modelled into fact and dimension tables for business reporting and KPI generation.
+
+- **Key Processes**:
+    - Creation of **fact tables**, such as `fact_transaction`, to capture key business events.
+    - Development of **dimension tables**, like `dim_patient`, `dim_provider`, `dim_department`, `dim_encounter`, `dim_icd_codes`, `dim_claims`, `dim_cpt_codes`, and `dim_npi` to provide context and details for the facts.
+
+- **Data Format**: Data is stored in **Delta tables**, optimised for reporting and analytical queries.
+
+## Data Flow
+
+1. **Landing Layer**: Claims and CPT data uploaded by insurance and third-party providers in CSV format.
+2. **Bronze Layer**: Data from various sources (EMR databases, APIs) is ingested in **Parquet** format.
+3. **Silver Layer**: Data is cleansed, standardised, and enriched using techniques like data quality checks, CDM implementation, and SCD Type 2. Data is stored in **Delta tables**.
+4. **Gold Layer**: Data from the Silver layer is transformed into fact and dimension tables, also stored as **Delta tables** for optimised reporting.
+
+
+## Best Practices
+
+- **Metadata-driven pipeline design**: A configuration file defines data sources and pipeline parameters, enhancing reusability and maintainability.
+- **Parallel pipeline execution**: The initial sequential data processing was slow due to the auto-incrementing key in the audit table. By removing the auto-incrementing key and enabling parallel processing in Azure Data Factory, the pipeline now runs much faster, significantly improving efficiency.
+- **Implementing Azure Key Vault**:  Securely stores and accesses sensitive information such as passwords and access tokens and eliminates hardcoding of credentials in code, aligning with industry best practices.
+- **Utilising Unity Catalog for Metadata Storage**: Replaces the local Hive metastore with Unity Catalog for centralised metadata management and facilitates metadata sharing across multiple Databricks workspaces, improving data pipelines and governance.
+- **Naming conventions and folder structure**: Improve code organisation and readability.
+- **Implementing the "Is Active" Flag**:  The configuration file includes an "is active" flag to control which tables are processed by the pipeline. The pipeline checks this flag and only processes tables marked as active, providing more granular control over data ingestion.
+- **Retry mechanisms**: Implement retries for failed tasks to ensure pipeline resilience.
+
+
+## Pipeline
+
+### Pipeline Setup/Implementation or Storage Configuration
+
+The data pipeline relies on mounting Azure Blob Storage containers to Databricks for various data stages (gold, silver, audit, etc.). The following code mounts the required storage containers and ensures they are available for data processing: [See Setup code](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py)
 
 
