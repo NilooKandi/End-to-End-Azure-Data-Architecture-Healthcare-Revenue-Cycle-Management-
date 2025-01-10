@@ -16,7 +16,7 @@
 
 ### 4. [Medallion Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#medallion-architecture)
 
-### 5. [Data Flow]
+### 5. [Data Flow](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#data-flow)
 
 ### 6. [Best Practices]
 
