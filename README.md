@@ -12,7 +12,7 @@
 
 ### 2. [System Architecture](#2-system-architecture)
 
-### 3. [Conceptual Entity-Relationship Diagram (ERD)](#3-conceptual-entity-relationship-diagram-erd)
+### 3. [Conceptual Entity-Relationship Diagram (ERD)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#3-conceptual-entity-relationship-diagram-erd-1)
 
 
 ## 1. Problem Statement
