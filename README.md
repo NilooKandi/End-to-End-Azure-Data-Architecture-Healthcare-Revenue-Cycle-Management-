@@ -29,30 +29,15 @@
 
 #### 5. [Pipeline Implementation]()
 
-a. Source to Landing
+- [a. Source to Landing]()
+- [b. Landing to Bronze]()
+- [c. Bronze to Silver]()
+- [d. Silver to Gold]()
 
-EMR Data Ingestion
-Claims Data Processing
-API Data Integration
+#### 6. Data Quality and Governance
 
-
-b. Landing to Bronze
-
-Data Format Conversion
-Initial Validation
-
-
-c. Bronze to Silver
-
-Data Quality Checks
-Common Data Model Implementation
-SCD Type 2 Processing
-
-
-d. Silver to Gold
-
-Fact Table Creation
-Dimension Table Processing
+- [a. Data Quality Framework]()
+- [b. Common Data Model]()
 
 #### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
 #### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
