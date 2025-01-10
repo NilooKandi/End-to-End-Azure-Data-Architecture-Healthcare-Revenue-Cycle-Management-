@@ -204,10 +204,55 @@ Development environment setup:
 - Cluster configuration for data processing
 
 
+## 4. Data Integration Components
 
+### a. Linked Services
+Core connections established in Azure Data Factory for seamless data integration: [See here for more details](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/1-%20Linked%20Service.md)
 
+**Azure SQL Database**: EMR data access using Key Vault for credentials
+**ADLS Gen2**: Data lake storage access with managed identity
+**Azure Databricks**: Data processing service connection with access token
+**Azure Key Vault**: Secure credential and secret management
 
+### b. Datasets
+Reusable dataset definitions in ADF: [See here for more details](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/2-%20Generic%20Datasets%20in%20Metadata-Driven%20Pipeline.md)
 
+**Source Datasets**
+- Generic SQL Dataset (parameterised for dynamic table access)
+- Generic Delimited Text Dataset (for CSV files)
+  
+**Sink Datasets**
+
+- Generic Parquet Dataset (for bronze layer storage)
+- Delta Lake Dataset (for silver/gold layer)
+
+**Configuration Dataset**
+
+- Load configuration files (load_config.csv)
+  
+### c. Metadata Configuration
+Metadata-driven approach for flexible pipeline execution:
+- Configuration File Structure
+  
+``` 
+database,datasource,tablename,loadtype,watermark,is_active,targetpath
+hospital-a,hos-a,dbo.encounters,Incremental,ModifiedDate,1,hosa
+hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
+```
+- Parameter Management
+```
+- Load Type Control: Full vs Incremental
+- Source Parameters: database, schema, table
+- Target Parameters: path, container, filename
+- Processing Parameters: watermark, is_active
+```
+- Dynamic Processing Control
+
+```
+- Active/Inactive Flag (@equals(item().is_active,'1'))
+- Load Type Determination (@equals(item().loadtype,'Full'))
+- Path Construction (@concat(item().targetpath, '/archive/'))
+```
 
 
 
