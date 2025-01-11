@@ -135,6 +135,7 @@ This project utilises a modern cloud-based data platform leveraging several Azur
 ### c. Medallion Architecture
 
 The solution leverages the **Medallion Architecture**, comprising three key layers: **Landing**, **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
+
 **1. Landing Layer**
 
 - **Purpose**: Serves as the entry point exclusively for claims data in CSV format, uploaded by insurance providers.
@@ -349,10 +350,11 @@ The end-to-end pipeline in this project orchestrates the entire data journey fro
     *   The pipeline implements **parallelism** for efficient data loading, processing multiple tables concurrently.
     *   It also incorporates **active/inactive flags** from the config file, allowing specific tables to be excluded from the ingestion process.
     *   The pipeline utilises **Azure Key Vault** to securely store and access credentials, enhancing the security of the data pipeline.
+![image](https://github.com/user-attachments/assets/0e0305f1-7cbc-4a0e-85fe-48c0b0af9c64)
+
 2.  **`exec_pl_silver_to_gold`**: This pipeline handles the transformation and refinement of data from the silver layer to the gold layer, ultimately creating the fact and dimension tables. This pipeline primarily executes Databricks notebooks that perform a series of data manipulation tasks.
 
     *   **Bronze to Silver**:  Notebooks in the "Silver" folder within the Databricks workspace handle the transformation of data from the bronze layer to the silver layer. Key steps in this stage include data cleaning, standardisation, implementation of a common data model, and the implementation of Slowly Changing Dimension (SCD) Type 2 logic to track historical changes.
-![image](https://github.com/user-attachments/assets/0e0305f1-7cbc-4a0e-85fe-48c0b0af9c64)
 
     *   **Silver to Gold**: Notebooks in the "Gold" folder are responsible for creating the final fact and dimension tables in the gold layer. This process involves selecting the latest records (marked as `is_current = true` and `is_quarantined = false`) from the silver layer, ensuring that only high-quality and current data is used for reporting and analysis.
 
