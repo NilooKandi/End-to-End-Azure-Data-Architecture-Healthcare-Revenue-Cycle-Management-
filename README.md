@@ -188,6 +188,8 @@ Essential Azure resources that form the foundation of our healthcare data engine
 - Azure Data Factory for pipeline orchestration
 - Azure Databricks for data processing
 - Azure Key Vault for secure credential management
+
+![image](https://github.com/user-attachments/assets/756befad-9884-4610-a164-2451f950ea53)
   
 ### b. Security Implementation
 Secure access management across all components:
@@ -196,6 +198,8 @@ Secure access management across all components:
 - Access Policies control resource access permissions
 - Managed Identities provide secure service authentication
 
+![image](https://github.com/user-attachments/assets/9c42338d-2e03-4934-b444-91e6dd14e582)
+
 ### c. Unity Catalogue Setup
 Centralised metadata management solution:
 - Metastore configuration with dedicated storage
@@ -203,6 +207,9 @@ Centralised metadata management solution:
 - Schema implementation (audit, bronze, silver, gold)
 - Cross-workspace access enablement
 - Data governance and access control
+
+![image](https://github.com/user-attachments/assets/507fb1c4-684c-45e5-b56d-2f748a643079)
+
 ### d. Databricks Environment Configuration
 Development environment setup:
 - [Mount points for ADLS Gen2 access](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/1-%20Setup/2.%20adls_mount.py)
@@ -221,8 +228,12 @@ Core connections established in Azure Data Factory for seamless data integration
 **Azure Databricks**: Data processing service connection with access token
 **Azure Key Vault**: Secure credential and secret management
 
+![image](https://github.com/user-attachments/assets/b6b1bc32-0fc0-400c-8795-9e82bb5454cf)
+
 ### b. Datasets
 Reusable dataset definitions in ADF: [See here for more details](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/2-%20Generic%20Datasets%20in%20Metadata-Driven%20Pipeline.md)
+
+![image](https://github.com/user-attachments/assets/112c6dcd-7e5e-4a35-b77f-35f6db40fa98)
 
 **Source Datasets**
 - Generic SQL Dataset (parameterised for dynamic table access)
