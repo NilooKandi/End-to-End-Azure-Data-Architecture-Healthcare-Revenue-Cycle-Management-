@@ -30,9 +30,9 @@
 #### 5. [Pipeline Implementation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#5-pipeline-implementation-1)
 
 - [a. Source to Landing (Sequential vs. Parallel)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-source-to-landing)
-- [b. Landing to Bronze]()
-- [c. Bronze to Silver]()
-- [d. Silver to Gold]()
+- [b. Bronze Layer]()
+- [c. Silver Layer]()
+- [d. Gold Layer]()
 
 #### 6. Data Quality and Governance
 
@@ -264,6 +264,7 @@ hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
 ## 5. Pipeline Implementation
 
 ### a. Source to Landing 
+The landing layer serves as a staging area for raw data provided by external sources in flat file formats, specifically CSV files containing claims data and CPT codes data. In addition to the raw data in the landing layer, a config file in CSV format is also stored within a specific container ("configs") and directory ("emr") in the Azure Data Lake Storage Gen2 account. This config file is crucial for driving the metadata-driven architecture of the data pipeline. It contains information about each data source such as database name, source type (Hospital A or B), table name, load type (full or incremental), watermark column, active status, and target path. The pipeline reads this config file and uses the metadata to dynamically control the data ingestion process. This approach makes the pipeline more flexible and adaptable to different data sources and loading scenarios.
 
 - [EMR Data Ingestion **Sequential**(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
 
@@ -295,26 +296,34 @@ Landing Integration
     └── landing/claims/{hospital}/
 ```
 
+### b. Bronze Layer
+
+The bronze layer stores all data in parquet format, including:
+- EMR data ingested directly from Azure SQL databases.
+- Claims data and CPT codes data transformed from CSV in the landing layer.
+- NPI and ICD codes data fetched directly from APIs.
+The bronze layer acts as the source of truth, containing all datasets in a consistent and optimised format.
+
 - **API Data Integration**
   - [ICD Codes Extract](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/2-%20API%20Extracts/ICD%20Code%20API%20extract.ipynb)
   - [NPI Data Extract](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Notebooks/2-%20API%20Extracts/NPI%20API%20extract.ipynb)
 
 
 
-### b. Landing to Bronze
+### c. Silver Layer
 
-- Data Format Conversion
-- Initial Validation
+The **silver** layer focuses on refining and transforming the raw data from the bronze layer to prepare it for downstream consumption. This involves:
+
+*   **Data cleaning**: Invalid, null, and duplicate records are removed to ensure data quality.
+*   **Standardisation**: Data formats are standardized to align with the Common Data Model for consistency and compatibility.
+*   **Common Data Model (CDM) Implementation**: Data from different hospitals with varying schemas are brought under a common schema, sometimes involving the creation of surrogate keys. 
+*   **Slowly Changing Dimension (SCD) Type 2 Implementation**:  Historical changes in the data are tracked using SCD Type 2 logic, which involves maintaining a history of changes over time by adding new records with updated information and marking previous records as inactive. 
+*   **Storage**: Transformed data is stored in Delta tables to support ACID transactions, incremental loads, and versioning.
+
+Notebooks located in the "Silver" folder within the Databricks workspace detail the logic and code used for these transformations. The silver layer delivers clean, standardized, enriched data suitable for further analytics and consumption by data scientists or data analysts. [See all notebooks and transformations in **Silver Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/3-%20Silver) 
 
 
-### c. Bronze to Silver
-
-- Data Quality Checks
-- Common Data Model Implementation
-- SCD Type 2 Processing
-
-
-### d. Silver to Gold
+### d. Gold Layer
 
 - Fact Table Creation
 - Dimension Table Processing
