@@ -32,7 +32,7 @@
 - [a. Source to Landing (Sequential vs. Parallel)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-source-to-landing)
 - [b. Bronze Layer](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-bronze-layer)
 - [c. Silver Layer](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-silver-layer)
-- [d. Gold Layer]()
+- [d. Gold Layer](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#d-gold-layer)
 
 #### 6. Data Quality and Governance
 
