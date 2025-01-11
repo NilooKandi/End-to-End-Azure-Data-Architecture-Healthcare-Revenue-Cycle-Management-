@@ -267,7 +267,7 @@ The landing layer serves as a staging area for raw data provided by external sou
 
 - [EMR Data Ingestion **Sequential**(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
 
-- [EMR Data Ingestion **Parallel** with **is_active flag**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Is_Active%20Flag.md)
+- [EMR Data Ingestion **Parallel** with **is_active flag**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/4-%20Pipeline%20Active%20Flag%20Implementation%20(Parallel).md)
 
 ```
 Pipeline: EMR to Landing
