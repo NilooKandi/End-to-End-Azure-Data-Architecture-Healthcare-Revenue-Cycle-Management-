@@ -265,7 +265,7 @@ hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
 ### a. Source to Landing 
 The landing layer serves as a staging area for raw data provided by external sources in flat file formats, specifically CSV files containing claims data and CPT codes data. In addition to the raw data in the landing layer, a config file in CSV format is also stored within a specific container ("configs") and directory ("emr") in the Azure Data Lake Storage Gen2 account. This config file is crucial for driving the metadata-driven architecture of the data pipeline. It contains information about each data source such as database name, source type (Hospital A or B), table name, load type (full or incremental), watermark column, active status, and target path. The pipeline reads this config file and uses the metadata to dynamically control the data ingestion process. This approach makes the pipeline more flexible and adaptable to different data sources and loading scenarios.
 
-- [EMR Data Ingestion **Sequential**(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
+- [EMR Data Ingestion **Sequential**(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/3-%20EMR%20Data%20Pipeline%20Implementation%20(sequential).md)
 
 - [EMR Data Ingestion **Parallel** with **is_active flag**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/4-%20Pipeline%20Active%20Flag%20Implementation%20(Parallel).md)
 
