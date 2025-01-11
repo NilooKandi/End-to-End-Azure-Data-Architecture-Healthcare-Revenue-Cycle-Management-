@@ -157,7 +157,7 @@ The solution leverages the **Medallion Architecture**, comprising three key laye
 
 **3. Silver Layer (Clean and Enriched Data)**
 
-- **Purpose**: The Silver layer contains cleaned, enriched, and standardized data ready for analysis and reporting.
+- **Purpose**: The Silver layer contains cleaned, enriched, and standardised data ready for analysis and reporting.
   
 - **Key Processes**:
     - **Data Cleaning**: Null values are handled, data quality checks are applied, and bad records are quarantined.
@@ -314,12 +314,12 @@ The bronze layer acts as the source of truth, containing all datasets in a consi
 The **silver** layer focuses on refining and transforming the raw data from the bronze layer to prepare it for downstream consumption. This involves:
 
 *   **Data cleaning**: Invalid, null, and duplicate records are removed to ensure data quality.
-*   **Standardisation**: Data formats are standardized to align with the Common Data Model for consistency and compatibility.
+*   **Standardisation**: Data formats are standardised to align with the Common Data Model for consistency and compatibility.
 *   **Common Data Model (CDM) Implementation**: Data from different hospitals with varying schemas are brought under a common schema, sometimes involving the creation of surrogate keys. 
 *   **Slowly Changing Dimension (SCD) Type 2 Implementation**:  Historical changes in the data are tracked using SCD Type 2 logic, which involves maintaining a history of changes over time by adding new records with updated information and marking previous records as inactive. 
 *   **Storage**: Transformed data is stored in Delta tables to support ACID transactions, incremental loads, and versioning.
 
-Notebooks located in the "Silver" folder within the Databricks workspace detail the logic and code used for these transformations. The silver layer delivers clean, standardized, enriched data suitable for further analytics and consumption by data scientists or data analysts. [See all notebooks and transformations in the **Silver Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/3-%20Silver) 
+Notebooks located in the "Silver" folder within the Databricks workspace detail the logic and code used for these transformations. The silver layer delivers clean, standardised, enriched data suitable for further analytics and consumption by data scientists or data analysts. [See all notebooks and transformations in the **Silver Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/3-%20Silver) 
 
 
 ### d. Gold Layer
@@ -350,7 +350,7 @@ The end-to-end pipeline in this project orchestrates the entire data journey fro
     *   The pipeline utilises **Azure Key Vault** to securely store and access credentials, enhancing the security of the data pipeline.
 2.  **`exec_pl_silver_to_gold`**: This pipeline handles the transformation and refinement of data from the silver layer to the gold layer, ultimately creating the fact and dimension tables. This pipeline primarily executes Databricks notebooks that perform a series of data manipulation tasks.
 
-    *   **Bronze to Silver**:  Notebooks in the "Silver" folder within the Databricks workspace handle the transformation of data from the bronze layer to the silver layer. Key steps in this stage include data cleaning, standardization, implementation of a common data model, and the implementation of Slowly Changing Dimension (SCD) Type 2 logic to track historical changes.
+    *   **Bronze to Silver**:  Notebooks in the "Silver" folder within the Databricks workspace handle the transformation of data from the bronze layer to the silver layer. Key steps in this stage include data cleaning, standardisation, implementation of a common data model, and the implementation of Slowly Changing Dimension (SCD) Type 2 logic to track historical changes.
 ![image](https://github.com/user-attachments/assets/0e0305f1-7cbc-4a0e-85fe-48c0b0af9c64)
 
     *   **Silver to Gold**: Notebooks in the "Gold" folder are responsible for creating the final fact and dimension tables in the gold layer. This process involves selecting the latest records (marked as `is_current = true` and `is_quarantined = false`) from the silver layer, ensuring that only high-quality and current data is used for reporting and analysis.
@@ -361,7 +361,7 @@ The end-to-end pipeline in this project orchestrates the entire data journey fro
 
 *   **Medallion Architecture**: The pipeline adheres to the medallion architecture, with data flowing sequentially through the landing, bronze, silver, and gold layers, each serving a specific purpose.
 *   **Metadata-Driven**: The pipeline is driven by metadata defined in a configuration file, making it adaptable to different data sources and loading scenarios.
-*   **Parquet and Delta Table Utilization**: The pipeline utilizes Parquet format in the bronze layer for optimized storage and query performance, and Delta tables in the silver and gold layers to ensure ACID properties and efficient data management.
+*   **Parquet and Delta Table Utilisation**: The pipeline utilises Parquet format in the bronze layer for optimised storage and query performance, and Delta tables in the silver and gold layers to ensure ACID properties and efficient data management.
 *   **Best Practices Implementation**: The pipeline incorporates best practices such as the use of Azure Key Vault for secure credential management, parallelism for efficient execution, and retries to handle potential failures.
 
 The end-to-end pipeline exemplifies a robust and scalable data engineering solution, showcasing best practices and industry-standard techniques for handling data ingestion, transformation, and refinement in an Azure environment. The resulting gold layer provides business users with a curated and trusted source of data for reporting, analysis, and informed decision-making.
