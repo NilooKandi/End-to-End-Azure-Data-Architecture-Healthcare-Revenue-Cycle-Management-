@@ -267,7 +267,8 @@ hospital-b,hos-b,dbo.patients,Incremental,Updated_Date,1,hosb
 
 - [EMR Data Ingestion **Sequential**(pl_emr_src_to_landing)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Pipeline%20Implementation/EMR%20Data%20Pipeline%20Implementation.md)
 
--[EMR Data Ingestion **Parallel** with **is_active flag**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Is_Active%20Flag.md)
+- [EMR Data Ingestion **Parallel** with **is_active flag**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/Is_Active%20Flag.md)
+
 ```
 Pipeline: EMR to Landing
 ├── Lookup (load_config.csv)
