@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-#### 1. [Problem Statement](#1-problem-statement)
+#### 1. [Problem Statement](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main?tab=readme-ov-file#1-problem-statement-1)
 - [a. Overview of the RCM Process](#a-overview-of-the-rcm-process)
 - [b. Key Challenges in Accounts Receivable (AR)](#b-key-challenges-in-accounts-receivable-ar)
 - [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
