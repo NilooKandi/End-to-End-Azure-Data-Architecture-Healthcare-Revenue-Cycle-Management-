@@ -319,7 +319,7 @@ The **silver** layer focuses on refining and transforming the raw data from the 
 *   **Slowly Changing Dimension (SCD) Type 2 Implementation**:  Historical changes in the data are tracked using SCD Type 2 logic, which involves maintaining a history of changes over time by adding new records with updated information and marking previous records as inactive. 
 *   **Storage**: Transformed data is stored in Delta tables to support ACID transactions, incremental loads, and versioning.
 
-Notebooks located in the "Silver" folder within the Databricks workspace detail the logic and code used for these transformations. The silver layer delivers clean, standardized, enriched data suitable for further analytics and consumption by data scientists or data analysts. [See all notebooks and transformations in **Silver Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/3-%20Silver) 
+Notebooks located in the "Silver" folder within the Databricks workspace detail the logic and code used for these transformations. The silver layer delivers clean, standardized, enriched data suitable for further analytics and consumption by data scientists or data analysts. [See all notebooks and transformations in the **Silver Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/3-%20Silver) 
 
 
 ### d. Gold Layer
@@ -333,7 +333,7 @@ The **gold** layer represents the final stage of data refinement in this project
 *   **Storage**: Similar to the silver layer, the gold layer uses **Delta tables** for storage, ensuring ACID compliance, efficient incremental loading, and data versioning. 
 *   **Accessibility**: Business users and reporting teams primarily utilise the gold layer. The structured data model enables them to efficiently perform complex queries, generate reports, and calculate critical business metrics, ultimately supporting data-driven decision-making processes. 
 
-Notebooks located in the "Gold" folder within the Databricks workspace document the logic and code used for transforming data from the silver layer into the desired fact and dimension table structure in the gold layer. [See all notebooks and transformations in **Gold Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/4-%20Gold)
+Notebooks located in the "Gold" folder within the Databricks workspace document the logic and code used for transforming data from the silver layer into the desired fact and dimension table structure in the gold layer. [See all notebooks and transformations in the **Gold Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/4-%20Gold)
 
 
 
