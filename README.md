@@ -365,18 +365,6 @@ The end-to-end pipeline exemplifies a robust and scalable data engineering solut
 
 
 
-
-## Best Practices
-
-- **Metadata-driven pipeline design**: A configuration file defines data sources and pipeline parameters, enhancing reusability and maintainability.
-- **Parallel pipeline execution**: The initial sequential data processing was slow due to the auto-incrementing key in the audit table. By removing the auto-incrementing key and enabling parallel processing in Azure Data Factory, the pipeline now runs much faster, significantly improving efficiency.
-- **Implementing Azure Key Vault**:  Securely stores and accesses sensitive information such as passwords and access tokens and eliminates hardcoding of credentials in code, aligning with industry best practices.
-- **Utilising Unity Catalog for Metadata Storage**: Replaces the local Hive metastore with Unity Catalog for centralised metadata management and facilitates metadata sharing across multiple Databricks workspaces, improving data pipelines and governance.
-- **Naming conventions and folder structure**: Improve code organisation and readability.
-- **Implementing the "Is Active" Flag**:  The configuration file includes an "is active" flag to control which tables are processed by the pipeline. The pipeline checks this flag and only processes tables marked as active, providing more granular control over data ingestion.
-- **Retry mechanisms**: Implement retries for failed tasks to ensure pipeline resilience.
-
-
 ## Pipeline
 
 ### Pipeline Setup/Implementation or Storage Configuration
