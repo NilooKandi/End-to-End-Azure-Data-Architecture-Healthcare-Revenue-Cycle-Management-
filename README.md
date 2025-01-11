@@ -336,8 +336,8 @@ The **gold** layer represents the final stage of data refinement in this project
 Notebooks located in the "Gold" folder within the Databricks workspace document the logic and code used for transforming data from the silver layer into the desired fact and dimension table structure in the gold layer. [See all notebooks and transformations in the **Gold Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/4-%20Gold)
 
 
-
 ## 6. End-to-End Pipeline Implementation
+
 The end-to-end pipeline in this project orchestrates the entire data journey from raw data ingestion to the creation of refined fact and dimension tables for reporting and analysis. The pipeline, named "pl_end_to_end_hc" in the Azure Data Factory, consists of two main execution pipelines:
 
 ![image](https://github.com/user-attachments/assets/e28d12fa-b810-4ca4-bef8-ace374b37d94)
