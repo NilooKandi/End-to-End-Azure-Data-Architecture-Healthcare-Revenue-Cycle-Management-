@@ -27,9 +27,9 @@
 - [b. Datasets](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-datasets)
 - [c. Metadata Configuration](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-metadata-configuration)
 
-#### 5. [Pipeline Implementation]()
+#### 5. [Pipeline Implementation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#5-pipeline-implementation-1)
 
-- [a. Source to Landing (Sequential vs. Parallel]()
+- [a. Source to Landing (Sequential vs. Parallel)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-source-to-landing)
 - [b. Landing to Bronze]()
 - [c. Bronze to Silver]()
 - [d. Silver to Gold]()
