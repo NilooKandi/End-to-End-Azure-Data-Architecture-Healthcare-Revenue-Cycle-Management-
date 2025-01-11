@@ -325,10 +325,16 @@ Notebooks located in the "Silver" folder within the Databricks workspace detail 
 
 ### d. Gold Layer
 
-- Fact Table Creation
-- Dimension Table Processing
+The **gold** layer represents the final stage of data refinement in this project, delivering data that is ready for consumption by business users and reporting tools. Key characteristics of this layer include:
 
+*   **Purpose**: The gold layer focuses on creating **fact and dimension tables** that facilitate efficient querying and analysis for business intelligence and reporting purposes. It aims to provide a curated and structured data model aligned with specific business requirements and KPIs. 
+*   **Data Source**: It receives data from the **silver** layer, drawing upon the cleaned, standardised, and enriched datasets prepared in the previous stage.
+*   **Transformations**: While the gold layer may include aggregations depending on the specific requirements, this project focuses on structuring the data into fact and dimension tables for reporting. This ensures that data is presented in a format readily understandable and usable by business users. 
+*   **Data Quality**: The gold layer maintains the high data quality achieved in the silver layer by only including records marked as `is_current = true` and `is_quarantined = false`. This ensures that only the most recent and validated data is used for reporting and analysis. 
+*   **Storage**: Similar to the silver layer, the gold layer uses **Delta tables** for storage, ensuring ACID compliance, efficient incremental loading, and data versioning. 
+*   **Accessibility**: Business users and reporting teams primarily utilise the gold layer. The structured data model enables them to efficiently perform complex queries, generate reports, and calculate critical business metrics, ultimately supporting data-driven decision-making processes. 
 
+Notebooks located in the "Gold" folder within the Databricks workspace document the logic and code used for transforming data from the silver layer into the desired fact and dimension table structure in the gold layer. [See all notebooks and transformations in **Gold Layer**](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main/Notebooks/4-%20Gold)
 
 
 
