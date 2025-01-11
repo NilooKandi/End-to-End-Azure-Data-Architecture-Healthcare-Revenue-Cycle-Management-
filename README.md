@@ -136,6 +136,8 @@ This project utilises a modern cloud-based data platform leveraging several Azur
 
 The solution leverages the **Medallion Architecture**, comprising three key layers: **Landing**, **Bronze**, **Silver**, and **Gold**, each with distinct responsibilities.
 
+https://datadrip.blog/assets/img/blog/ask-databricks-1-6@0,5x.webp
+
 **1. Landing Layer**
 
 - **Purpose**: Serves as the entry point exclusively for claims data in CSV format, uploaded by insurance providers.
