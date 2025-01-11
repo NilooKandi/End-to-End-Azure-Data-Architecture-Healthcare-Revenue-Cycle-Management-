@@ -34,12 +34,7 @@
 - [c. Silver Layer](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-silver-layer)
 - [d. Gold Layer](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#d-gold-layer)
 
-#### 6. Data Quality and Governance
-
-- [a. Data Quality Framework]()
-- [b. Common Data Model]()
-
-#### 7. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
+#### 6. [End-to-End Pipeline Implementation](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#6-end-to-end-pipeline-implementation)
 
 
 ## 1. Problem Statement
