@@ -339,9 +339,9 @@ Notebooks located in the "Gold" folder within the Databricks workspace document 
 ## 6. End-to-End Pipeline Implementation
 
 The end-to-end pipeline in this project orchestrates the entire data journey from raw data ingestion to the creation of refined fact and dimension tables for reporting and analysis. The pipeline, named "pl_end_to_end_hc" in the Azure Data Factory, consists of two main execution pipelines:
+
 ![image](https://github.com/user-attachments/assets/54ea4d24-430b-4f68-8e8c-8b21e30a5d36)
 
-![image](https://github.com/user-attachments/assets/e28d12fa-b810-4ca4-bef8-ace374b37d94)
 
 1.  **`exec_pl_emr_src_to_landing`**: This pipeline focuses on moving data from the source Azure SQL databases (EMR data) to the bronze layer of the data lake. This pipeline was developed in Part 1 of the project and leverages a metadata-driven approach. It reads the `loadconfig.csv` file from the "configs/emr" folder in the data lake. This config file contains metadata about the source tables and dictates how the data should be ingested.  The pipeline iterates through the config file, checks for the existence of files, archives existing parquet files, and then loads the data into the bronze layer in parquet format based on the specified load type (full or incremental).
 
