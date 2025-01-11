@@ -29,7 +29,7 @@
 
 #### 5. [Pipeline Implementation]()
 
-- [a. Source to Landing]()
+- [a. Source to Landing (Sequential vs. Parallel]()
 - [b. Landing to Bronze]()
 - [c. Bronze to Silver]()
 - [d. Silver to Gold]()
