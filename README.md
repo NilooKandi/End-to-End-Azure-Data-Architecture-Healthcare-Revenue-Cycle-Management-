@@ -39,8 +39,7 @@
 - [a. Data Quality Framework]()
 - [b. Common Data Model]()
 
-#### 6. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
-#### 7. [Pipelines](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#pipeline)
+#### 7. [Best Practices](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#best-practices)
 
 
 ## 1. Problem Statement
