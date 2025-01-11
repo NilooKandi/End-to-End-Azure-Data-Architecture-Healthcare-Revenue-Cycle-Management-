@@ -5,10 +5,10 @@
 ## Table of Contents
 
 #### 1. [Problem Statement](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/tree/main?tab=readme-ov-file#1-problem-statement-1)
-- [a. Overview of the RCM Process](#a-overview-of-the-rcm-process)
-- [b. Key Challenges in Accounts Receivable (AR)](#b-key-challenges-in-accounts-receivable-ar)
-- [c. Key Performance Indicators (KPIs) for AR](#c-key-performance-indicators-kpis-for-ar)
-- [d. Data Engineering Objectives](#d-data-engineering-objectives)
+- [a. Overview of the RCM Process](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-overview-of-the-rcm-process)
+- [b. Key Challenges in Accounts Receivable (AR)](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#b-key-challenges-in-accounts-receivable-ar)
+- [c. Key Performance Indicators (KPIs) for AR](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#c-key-performance-indicators-kpis-for-ar)
+- [d. Data Engineering Objectives](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#d-data-engineering-objectives)
 
 #### 2. [Infrastructure and Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#2-infrastructure-and-architecture-1)
 - [a. System Architecture](https://github.com/NilooKandi/End-to-End-Azure-Data-Architecture-Healthcare-Revenue-Cycle-Management-/blob/main/README.md#a-system-architecture)
